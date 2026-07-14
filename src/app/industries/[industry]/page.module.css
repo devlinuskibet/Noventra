@@ -1,0 +1,40 @@
+.hero { padding: 140px 0 80px; background: linear-gradient(160deg, var(--color-base-900) 0%, var(--color-base-800) 100%); border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+.heroContent { max-width: 700px; }
+.heroIcon { width: 64px; height: 64px; border-radius: var(--radius-xl); background: var(--color-accent-subtle); color: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-6); border: 1px solid var(--color-accent-border); }
+.heroTitle { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: var(--line-height-tight); letter-spacing: var(--letter-spacing-tight); color: var(--color-white); margin-bottom: var(--space-5); }
+.heroSubtitle { font-size: var(--font-size-lg); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); margin-bottom: var(--space-8); }
+
+.challengesGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); }
+.challengeCard { padding: var(--space-6); background: var(--color-base-800); border: var(--border-subtle); border-radius: var(--radius-lg); transition: all var(--transition-fast); }
+.challengeCard:hover { border-color: rgba(255, 255, 255, 0.12); }
+.challengeIcon { color: var(--color-warning); margin-bottom: var(--space-4); }
+.challengeTitle { font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--space-2); }
+.challengeDesc { font-size: var(--font-size-sm); color: var(--color-text-muted); line-height: var(--line-height-relaxed); }
+
+.servicesGrid { display: flex; flex-direction: column; gap: var(--space-3); }
+.serviceCard { display: flex; align-items: center; gap: var(--space-5); padding: var(--space-5) var(--space-6); background: var(--color-base-700); border: var(--border-subtle); border-radius: var(--radius-lg); text-decoration: none; transition: all var(--transition-base); }
+.serviceCard:hover { border-color: var(--color-accent-border); transform: translateX(4px); }
+.serviceIcon { width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-accent-subtle); color: var(--color-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.serviceName { font-size: var(--font-size-base); font-weight: 600; color: var(--color-text-primary); margin-bottom: 2px; }
+.serviceDesc { font-size: var(--font-size-sm); color: var(--color-text-muted); }
+.serviceArrow { color: var(--color-base-400); margin-left: auto; flex-shrink: 0; transition: color var(--transition-fast); }
+.serviceCard:hover .serviceArrow { color: var(--color-accent); }
+
+.caseStudyTeaser { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--space-10); align-items: start; }
+.teaserContent { display: flex; flex-direction: column; gap: var(--space-6); }
+.teaserSection p { font-size: var(--font-size-base); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); }
+.teaserLabel { font-size: var(--font-size-sm); font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: var(--letter-spacing-wide); margin-bottom: var(--space-3); }
+.teaserStats { display: flex; flex-direction: column; gap: var(--space-4); }
+.teaserStat { padding: var(--space-5); background: var(--color-base-800); border: var(--border-subtle); border-radius: var(--radius-md); }
+.teaserStatValue { font-size: var(--font-size-xl); font-weight: 700; color: var(--color-accent); margin-bottom: var(--space-1); }
+.teaserStatLabel { font-size: var(--font-size-sm); color: var(--color-text-muted); }
+
+.complianceGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+.complianceItem { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--space-5); background: var(--color-base-700); border: var(--border-subtle); border-radius: var(--radius-md); font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+.complianceItem svg { color: var(--color-success); flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  .challengesGrid { grid-template-columns: 1fr; }
+  .caseStudyTeaser { grid-template-columns: 1fr; }
+  .complianceGrid { grid-template-columns: 1fr; }
+}
