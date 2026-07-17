@@ -10,10 +10,10 @@
 }
 
 .scrolled {
-  background: rgba(5, 10, 18, 0.85);
+  background: rgba(250, 249, 246, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   padding: var(--space-3) 0;
 }
 
@@ -30,7 +30,7 @@
   align-items: center;
   gap: var(--space-3);
   text-decoration: none;
-  color: var(--color-white);
+  color: var(--color-text-primary);
   flex-shrink: 0;
 }
 
@@ -66,8 +66,8 @@
 }
 
 .navLink:hover {
-  color: var(--color-white);
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-accent);
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .navLink svg {
@@ -89,8 +89,8 @@
 }
 
 .megaMenuInner {
-  background: var(--color-base-700);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--color-base-800);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
   overflow: hidden;
@@ -115,7 +115,7 @@
 }
 
 .megaMenuItem:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .megaMenuIcon {
@@ -171,8 +171,8 @@
 }
 
 .megaMenuItemCompact:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-white);
+  background: rgba(0, 0, 0, 0.02);
+  color: var(--color-accent);
 }
 
 .megaMenuItemCompact svg {
@@ -182,8 +182,8 @@
 
 .megaMenuFooter {
   padding: var(--space-3) var(--space-6);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.01);
 }
 
 .megaMenuAllLink {

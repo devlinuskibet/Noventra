@@ -1,5 +1,5 @@
 /* =============================================
-   NOVENTRA TECHNOLOGIES — Design System
+   NOVENTRA TECHNOLOGIES - Design System
    Dark-mode-forward, enterprise-grade
    ============================================= */
 
@@ -8,32 +8,32 @@
 
 /* ---- CSS Custom Properties ---- */
 :root {
-  /* -- Colors -- */
-  --color-base-900: #050A12;
-  --color-base-800: #0B1220;
-  --color-base-700: #10182B;
-  --color-base-600: #151D2E;
-  --color-base-500: #1E293B;
-  --color-base-400: #334155;
-  --color-base-300: #475569;
-  --color-base-200: #64748B;
-  --color-base-100: #94A3B8;
+  /* -- Colors (Lighter Creative Theme Palette) -- */
+  --color-base-900: #FAF9F6; /* Premium alabaster warm white background */
+  --color-base-800: #FFFFFF; /* Pure white card surface background */
+  --color-base-700: #F3F1EB; /* Very light gray/cream border or subtle card */
+  --color-base-600: #E5E3DB; /* Soft gray border */
+  --color-base-500: #D3D1C8; /* Middle gray border */
+  --color-base-400: #B2B0A6; /* Gray neutral */
+  --color-base-300: #7E7C74; /* Muted gray text */
+  --color-base-200: #4A4944; /* Dark secondary text */
+  --color-base-100: #1C1B1A; /* Charcoal primary text */
 
   --color-white: #FFFFFF;
-  --color-text-primary: #F1F5F9;
-  --color-text-secondary: #CBD5E1;
-  --color-text-muted: #94A3B8;
-  --color-text-dark: #0F172A;
-  --color-text-dark-secondary: #475569;
+  --color-text-primary: #1E293B; /* Deep Blue-Slate primary text */
+  --color-text-secondary: #475569; /* Slate secondary text */
+  --color-text-muted: #64748B; /* Muted slate text */
+  --color-text-dark: #FAF9F6; /* Light text for elements with dark background */
+  --color-text-dark-secondary: #E5E3DB;
 
-  --color-light-bg: #F5F7FA;
+  --color-light-bg: #FAF9F6;
   --color-light-surface: #FFFFFF;
   --color-light-border: #E2E8F0;
 
-  --color-accent: #3B82F6;
-  --color-accent-hover: #60A5FA;
-  --color-accent-subtle: rgba(59, 130, 246, 0.1);
-  --color-accent-border: rgba(59, 130, 246, 0.25);
+  --color-accent: #2563EB; /* Premium creative Indigo Blue */
+  --color-accent-hover: #1D4ED8;
+  --color-accent-subtle: rgba(37, 99, 235, 0.06);
+  --color-accent-border: rgba(37, 99, 235, 0.15);
 
   --color-success: #10B981;
   --color-warning: #F59E0B;
@@ -95,18 +95,18 @@
   --radius-2xl: 24px;
   --radius-full: 9999px;
 
-  --border-subtle: 1px solid rgba(255, 255, 255, 0.06);
-  --border-light: 1px solid rgba(255, 255, 255, 0.1);
-  --border-medium: 1px solid rgba(255, 255, 255, 0.15);
+  --border-subtle: 1px solid rgba(0, 0, 0, 0.04);
+  --border-light: 1px solid rgba(0, 0, 0, 0.08);
+  --border-medium: 1px solid rgba(0, 0, 0, 0.12);
   --border-accent: 1px solid var(--color-accent-border);
 
   /* -- Shadows -- */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
-  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(59, 130, 246, 0.15);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.08);
+  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.1);
 
   /* -- Transitions -- */
   --transition-fast: 150ms ease;

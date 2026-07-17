@@ -13,7 +13,7 @@
   min-height: 90vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(160deg, var(--color-base-900) 0%, var(--color-base-800) 50%, #0a1628 100%);
+  background: linear-gradient(160deg, var(--color-base-900) 0%, var(--color-base-800) 50%, #e6eefc 100%);
   overflow: hidden;
   padding-top: 80px;
 }
@@ -55,7 +55,7 @@
   font-weight: 800;
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
-  color: var(--color-white);
+  color: var(--color-text-primary);
   margin-bottom: var(--space-6);
   animation: fadeUp 0.6s ease 0.1s both;
 }
@@ -79,8 +79,8 @@
 /* ---- Logo Strip ---- */
 .logoStrip {
   background: var(--color-base-800);
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   padding: var(--space-5) 0;
 }
 
@@ -145,7 +145,7 @@
 }
 
 .valueCard:hover {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
@@ -205,7 +205,7 @@
 }
 
 .serviceCard:hover {
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 0, 0, 0.08);
   transform: translateY(-4px);
   box-shadow: var(--shadow-card-hover);
 }

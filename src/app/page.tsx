@@ -53,7 +53,7 @@ export default function HomePage() {
               {
                 icon: Layers,
                 title: "End-to-end expertise",
-                description: "Software, cloud, security, networking, AI, data, and consultancy — under one partner. No fragmented vendor management.",
+                description: "Software, cloud, security, networking, AI, data, and consultancy - under one partner. No fragmented vendor management.",
               },
               {
                 icon: Shield,
@@ -68,7 +68,7 @@ export default function HomePage() {
               {
                 icon: Target,
                 title: "Measurable outcomes",
-                description: "Every engagement ties back to business results — reduced downtime, lower costs, faster delivery, stronger security posture.",
+                description: "Every engagement ties back to business results - reduced downtime, lower costs, faster delivery, stronger security posture.",
               },
             ].map((item) => {
               const Icon = item.icon;
@@ -93,7 +93,7 @@ export default function HomePage() {
             <span className="eyebrow">Our services</span>
             <h2 className="section-title">One partner. Every layer of your technology.</h2>
             <p className="section-subtitle">
-              From custom software to cybersecurity, from cloud infrastructure to AI-powered automation —
+              From custom software to cybersecurity, from cloud infrastructure to AI-powered automation -
               we deliver the full spectrum of technology services modern organizations require.
             </p>
           </div>
@@ -152,7 +152,7 @@ export default function HomePage() {
             <div className={styles.caseStudyContent}>
               <span className="eyebrow">Featured case study</span>
               <h2 className={`section-title ${styles.caseStudyTitle}`}>{featuredCaseStudy.title}</h2>
-              <p className={styles.caseStudyClient}>{featuredCaseStudy.client} — {featuredCaseStudy.industry}</p>
+              <p className={styles.caseStudyClient}>{featuredCaseStudy.client} - {featuredCaseStudy.industry}</p>
               <div className={styles.caseStudyStats}>
                 {featuredCaseStudy.stats.slice(0, 3).map((stat) => (
                   <div key={stat.label} className={styles.caseStudyStat}>
@@ -223,9 +223,9 @@ export default function HomePage() {
           </p>
           <div className={styles.certGrid}>
             {[
-              "ISO 27001 — Information Security",
-              "ISO 9001 — Quality Management",
-              "SOC 2 Type II — Trust Services",
+              "ISO 27001 - Information Security",
+              "ISO 9001 - Quality Management",
+              "SOC 2 Type II - Trust Services",
               "AWS Advanced Partner",
               "Microsoft Gold Partner",
               "Google Cloud Partner",
@@ -302,7 +302,7 @@ export default function HomePage() {
           </h2>
           <p className={styles.ctaSubtitle}>
             Whether you need to modernize infrastructure, secure your systems, build custom software,
-            or define a technology strategy — the conversation starts here.
+            or define a technology strategy - the conversation starts here.
           </p>
           <div className={styles.ctaActions}>
             <Link href="/contact/consultation" className="btn btn--white btn--large">
