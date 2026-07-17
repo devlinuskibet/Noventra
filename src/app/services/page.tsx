@@ -34,7 +34,7 @@ export default function ServicesPage() {
           </h1>
           <p className={styles.heroSubtitle}>
             From custom software development to cybersecurity, from cloud infrastructure
-            to AI-powered analytics — we deliver the complete spectrum of technology
+            to AI-powered analytics - we deliver the complete spectrum of technology
             services your organization needs to operate, compete, and grow.
           </p>
         </div>

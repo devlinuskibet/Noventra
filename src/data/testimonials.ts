@@ -14,7 +14,7 @@ export const testimonials: Testimonial[] = [
     title: "Chief Information Officer",
     company: "Meridian Healthcare Group",
     quote:
-      "Noventra transformed our approach to patient data security. Their team didn't just implement systems — they helped us build a security culture across 12 facilities. The 24/7 SOC gives our board the confidence that our most sensitive data is protected around the clock.",
+      "Noventra transformed our approach to patient data security. Their team didn't just implement systems - they helped us build a security culture across 12 facilities. The 24/7 SOC gives our board the confidence that our most sensitive data is protected around the clock.",
     industry: "Healthcare",
   },
   {

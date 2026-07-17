@@ -58,7 +58,7 @@ export const caseStudies: CaseStudy[] = [
     solution:
       "Noventra deployed an IoT-based fleet tracking system integrated with a custom dispatch optimization platform and customer-facing shipment portal. The solution was connected to Atlas's existing ERP system, creating a unified view across operations, finance, and customer service.",
     results:
-      "Atlas achieved 95% ETA accuracy for customer deliveries, improved fleet utilization by 22%, and reduced fuel costs by 18% through optimized routing — translating to significant bottom-line improvement within the first year.",
+      "Atlas achieved 95% ETA accuracy for customer deliveries, improved fleet utilization by 22%, and reduced fuel costs by 18% through optimized routing - translating to significant bottom-line improvement within the first year.",
     stats: [
       { label: "Fleet utilization improvement", value: "22%" },
       { label: "Customer ETA accuracy", value: "95%" },
@@ -87,7 +87,7 @@ export const caseStudies: CaseStudy[] = [
     solution:
       "Noventra designed and deployed an offline-capable mobile data collection platform with encrypted synchronization, a centralized reporting dashboard for donor compliance, and cost-optimized cloud infrastructure leveraging nonprofit technology programs.",
     results:
-      "Catalyst reduced field data collection time by 70%, cut annual IT costs by 45%, and connected all 8 country operations to a single reporting platform — enabling real-time program monitoring and dramatically faster donor reporting.",
+      "Catalyst reduced field data collection time by 70%, cut annual IT costs by 45%, and connected all 8 country operations to a single reporting platform - enabling real-time program monitoring and dramatically faster donor reporting.",
     stats: [
       { label: "Data collection time reduced", value: "70%" },
       { label: "Annual IT cost reduction", value: "45%" },
@@ -112,7 +112,7 @@ export const caseStudies: CaseStudy[] = [
     solution:
       "Noventra delivered a production-ready MVP using cloud-native architecture on AWS, implemented SOC 2-ready security controls from day one, and provided ongoing DevOps and infrastructure support as the platform scaled through fundraising and user growth.",
     results:
-      "The MVP launched in 11 weeks — ahead of schedule. Within 18 months, the platform scaled to 50,000 users without requiring an architecture rebuild, and the security posture helped Nexus close its Series A with confidence.",
+      "The MVP launched in 11 weeks - ahead of schedule. Within 18 months, the platform scaled to 50,000 users without requiring an architecture rebuild, and the security posture helped Nexus close its Series A with confidence.",
     stats: [
       { label: "MVP delivered in", value: "11 weeks" },
       { label: "Users scaled to", value: "50,000+" },

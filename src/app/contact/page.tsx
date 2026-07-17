@@ -26,7 +26,7 @@ const serviceOptions = [
   "Enterprise Systems (ERP/CRM)",
   "Data & Analytics",
   "ICT Consultancy",
-  "Not sure — I need guidance",
+  "Not sure - I need guidance",
 ];
 
 export default function ContactPage() {
@@ -53,7 +53,7 @@ export default function ContactPage() {
           <h1 className={styles.heroTitle}>Let&apos;s discuss your technology needs</h1>
           <p className={styles.heroSubtitle}>
             Whether you&apos;re planning a new project, need ongoing support, or want to explore
-            how technology can transform your operations — start here.
+            how technology can transform your operations - start here.
           </p>
         </div>
       </section>

@@ -20,7 +20,7 @@ export default function HeroSection() {
           </h1>
           <p className={styles.heroSubtitle}>
             Noventra Technologies plans, builds, secures, and manages the systems
-            modern organizations depend on — from cloud infrastructure to
+            modern organizations depend on - from cloud infrastructure to
             AI-powered automation.
           </p>
           <div className={styles.heroActions}>

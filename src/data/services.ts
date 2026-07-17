@@ -65,7 +65,7 @@ export const serviceCategories: ServiceCategory[] = [
     slug: "software-development",
     name: "Software Development",
     shortDescription:
-      "Bespoke applications that fit your business — not the other way around.",
+      "Bespoke applications that fit your business - not the other way around.",
     description:
       "From custom enterprise applications to mobile platforms and API integrations, we build software that drives operational efficiency and competitive advantage. Every solution is engineered for reliability, scalability, and seamless integration with your existing technology environment.",
     icon: Code2,
@@ -136,7 +136,7 @@ export const serviceCategories: ServiceCategory[] = [
         slug: "web-development",
         name: "Website Development",
         description:
-          "Corporate, e-commerce, and web application development — one capability within our broader technology practice.",
+          "Corporate, e-commerce, and web application development - one capability within our broader technology practice.",
         icon: Globe,
       },
       {
@@ -158,7 +158,7 @@ export const serviceCategories: ServiceCategory[] = [
     icon: Cloud,
     filterTag: "Build",
     businessChallenge:
-      "Organizations struggle with cloud complexity — uncontrolled costs, security gaps, performance issues, and the challenge of managing infrastructure across multiple providers while maintaining compliance and reliability.",
+      "Organizations struggle with cloud complexity - uncontrolled costs, security gaps, performance issues, and the challenge of managing infrastructure across multiple providers while maintaining compliance and reliability.",
     approach: [
       "Cloud readiness assessment and migration planning",
       "Architecture design for security, performance, and cost optimization",
@@ -266,7 +266,7 @@ export const serviceCategories: ServiceCategory[] = [
       {
         question: "Can you assess our current security posture?",
         answer:
-          "Absolutely. Our security audit service provides a comprehensive evaluation of your environment — network, endpoints, policies, and people — with a prioritized remediation roadmap.",
+          "Absolutely. Our security audit service provides a comprehensive evaluation of your environment - network, endpoints, policies, and people - with a prioritized remediation roadmap.",
       },
     ],
     subServices: [
@@ -313,7 +313,7 @@ export const serviceCategories: ServiceCategory[] = [
     shortDescription:
       "Reliable, SLA-backed IT support so your team can focus on the business.",
     description:
-      "We take ownership of your technology operations — from day-to-day helpdesk support to proactive infrastructure monitoring and hardware lifecycle management. Our managed IT services provide the reliability and responsiveness of an in-house IT department at a fraction of the cost.",
+      "We take ownership of your technology operations - from day-to-day helpdesk support to proactive infrastructure monitoring and hardware lifecycle management. Our managed IT services provide the reliability and responsiveness of an in-house IT department at a fraction of the cost.",
     icon: Headphones,
     filterTag: "Manage",
     businessChallenge:
@@ -390,7 +390,7 @@ export const serviceCategories: ServiceCategory[] = [
     shortDescription:
       "Robust, scalable network infrastructure engineered for reliability.",
     description:
-      "We design, build, and manage network infrastructure that keeps organizations connected — from structured cabling and campus wireless to SD-WAN solutions connecting distributed locations. Every network we deliver is built for performance, security, and future scalability.",
+      "We design, build, and manage network infrastructure that keeps organizations connected - from structured cabling and campus wireless to SD-WAN solutions connecting distributed locations. Every network we deliver is built for performance, security, and future scalability.",
     icon: Network,
     filterTag: "Build",
     businessChallenge:
@@ -459,7 +459,7 @@ export const serviceCategories: ServiceCategory[] = [
     shortDescription:
       "Identify where AI creates real value, then implement it responsibly.",
     description:
-      "We help organizations move beyond AI hype to practical, measurable implementation — from identifying genuine use cases to deploying production-ready AI and automation solutions. Every implementation is grounded in business value, data readiness, and responsible AI principles.",
+      "We help organizations move beyond AI hype to practical, measurable implementation - from identifying genuine use cases to deploying production-ready AI and automation solutions. Every implementation is grounded in business value, data readiness, and responsible AI principles.",
     icon: Brain,
     filterTag: "Automate",
     businessChallenge:
@@ -485,7 +485,7 @@ export const serviceCategories: ServiceCategory[] = [
       {
         question: "Is our organization ready for AI?",
         answer:
-          "Readiness depends on data quality, clear use cases, and organizational willingness. Our AI readiness assessment evaluates these factors and provides a practical roadmap, even if the answer is 'not yet — here's what to do first.'",
+          "Readiness depends on data quality, clear use cases, and organizational willingness. Our AI readiness assessment evaluates these factors and provides a practical roadmap, even if the answer is 'not yet - here's what to do first.'",
       },
       {
         question: "What kind of ROI can we expect from automation?",
@@ -609,7 +609,7 @@ export const serviceCategories: ServiceCategory[] = [
     icon: BarChart3,
     filterTag: "Automate",
     businessChallenge:
-      "Most organizations sit on vast amounts of data they can't effectively use. Poor data quality, fragmented systems, and lack of analytics capability mean decisions are made on intuition rather than evidence — and opportunities for optimization go unnoticed.",
+      "Most organizations sit on vast amounts of data they can't effectively use. Poor data quality, fragmented systems, and lack of analytics capability mean decisions are made on intuition rather than evidence - and opportunities for optimization go unnoticed.",
     approach: [
       "Data audit and maturity assessment",
       "Data architecture and pipeline design",
@@ -631,7 +631,7 @@ export const serviceCategories: ServiceCategory[] = [
       {
         question: "What does a data analytics engagement look like?",
         answer:
-          "We typically start with a data audit to understand your current state, then design and build the infrastructure needed to make your data usable — pipelines, warehouses, and dashboards — before moving to advanced analytics.",
+          "We typically start with a data audit to understand your current state, then design and build the infrastructure needed to make your data usable - pipelines, warehouses, and dashboards - before moving to advanced analytics.",
       },
       {
         question: "Can you work with our existing BI tools?",
@@ -686,7 +686,7 @@ export const serviceCategories: ServiceCategory[] = [
     icon: Lightbulb,
     filterTag: "Advise",
     businessChallenge:
-      "Digital transformation initiatives fail more often than they succeed — usually because organizations start with technology rather than strategy, lack a realistic roadmap, or underestimate the governance and change management required.",
+      "Digital transformation initiatives fail more often than they succeed - usually because organizations start with technology rather than strategy, lack a realistic roadmap, or underestimate the governance and change management required.",
     approach: [
       "Executive stakeholder interviews and current-state assessment",
       "Technology landscape mapping and gap analysis",
@@ -708,7 +708,7 @@ export const serviceCategories: ServiceCategory[] = [
         question:
           "How is consultancy different from your other services?",
         answer:
-          "Consultancy operates at the strategic level — helping leadership teams decide what to do and when. Our other services execute the plan. Many clients engage us for both, but consultancy can also stand alone.",
+          "Consultancy operates at the strategic level - helping leadership teams decide what to do and when. Our other services execute the plan. Many clients engage us for both, but consultancy can also stand alone.",
       },
       {
         question: "Do you work with public sector procurement processes?",
@@ -718,7 +718,7 @@ export const serviceCategories: ServiceCategory[] = [
       {
         question: "What outcomes should we expect from a consultancy engagement?",
         answer:
-          "Deliverables typically include a current-state assessment, a prioritized multi-year technology roadmap, a governance framework, and an investment plan — giving your board and leadership team a clear, defensible path forward.",
+          "Deliverables typically include a current-state assessment, a prioritized multi-year technology roadmap, a governance framework, and an investment plan - giving your board and leadership team a clear, defensible path forward.",
       },
     ],
     subServices: [

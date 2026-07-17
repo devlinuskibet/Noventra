@@ -36,7 +36,7 @@ export const industries: Industry[] = [
     headline:
       "Enterprise-grade technology, sized for growing businesses",
     description:
-      "Small and medium enterprises need reliable, affordable technology that grows with them — without the overhead of a full internal IT department. We provide the expertise, security, and systems that let SMEs compete with larger organizations while keeping costs predictable.",
+      "Small and medium enterprises need reliable, affordable technology that grows with them - without the overhead of a full internal IT department. We provide the expertise, security, and systems that let SMEs compete with larger organizations while keeping costs predictable.",
     icon: Building,
     challenges: [
       {
@@ -91,7 +91,7 @@ export const industries: Industry[] = [
     headline:
       "Technology that educators and students can depend on, every day",
     description:
-      "Educational institutions face unique technology challenges — from campus-wide networking and e-learning platforms to student data privacy and budget cycle constraints. We provide the infrastructure, security, and systems that modern education demands.",
+      "Educational institutions face unique technology challenges - from campus-wide networking and e-learning platforms to student data privacy and budget cycle constraints. We provide the infrastructure, security, and systems that modern education demands.",
     icon: GraduationCap,
     challenges: [
       {
@@ -147,7 +147,7 @@ export const industries: Industry[] = [
     headline:
       "Technology healthcare organizations can trust with lives and data",
     description:
-      "In healthcare, technology isn't just operational — it's life-critical. We provide the infrastructure, security, and systems that healthcare organizations need to deliver care reliably while protecting the most sensitive data in any industry.",
+      "In healthcare, technology isn't just operational - it's life-critical. We provide the infrastructure, security, and systems that healthcare organizations need to deliver care reliably while protecting the most sensitive data in any industry.",
     icon: HeartPulse,
     challenges: [
       {
@@ -158,7 +158,7 @@ export const industries: Industry[] = [
       {
         title: "System uptime is non-negotiable",
         description:
-          "When systems go down in healthcare, patient care is directly impacted. Uptime isn't a metric — it's a safety requirement.",
+          "When systems go down in healthcare, patient care is directly impacted. Uptime isn't a metric - it's a safety requirement.",
       },
       {
         title: "Complex system integration",
@@ -205,7 +205,7 @@ export const industries: Industry[] = [
     headline:
       "Stretch every dollar further with technology that serves your mission",
     description:
-      "Nonprofits and NGOs need technology that maximizes impact per dollar — protecting donor data, enabling remote operations, and streamlining reporting, all within tight budget constraints. We provide cost-effective solutions that serve the mission, not the other way around.",
+      "Nonprofits and NGOs need technology that maximizes impact per dollar - protecting donor data, enabling remote operations, and streamlining reporting, all within tight budget constraints. We provide cost-effective solutions that serve the mission, not the other way around.",
     icon: HandHeart,
     challenges: [
       {
@@ -273,7 +273,7 @@ export const industries: Industry[] = [
       {
         title: "POS and booking system integration",
         description:
-          "Multiple systems — POS, PMS, booking engines, loyalty programs — need to work together seamlessly.",
+          "Multiple systems - POS, PMS, booking engines, loyalty programs - need to work together seamlessly.",
       },
       {
         title: "Guest data security",
@@ -301,7 +301,7 @@ export const industries: Industry[] = [
     caseStudyTeaser: {
       title: "Boutique hotel group unifies technology across 6 properties",
       challenge:
-        "A growing hotel group had different technology setups at each property — different POS systems, inconsistent WiFi, and no centralized guest data management.",
+        "A growing hotel group had different technology setups at each property - different POS systems, inconsistent WiFi, and no centralized guest data management.",
       outcome:
         "Standardized network infrastructure, deployed unified POS and PMS platforms, and implemented centralized guest WiFi with analytics across all properties.",
       stats: [
@@ -490,7 +490,7 @@ export const industries: Industry[] = [
     headline:
       "Build fast, scale smart, and secure your technology from day one",
     description:
-      "Startups need to move fast without building technical debt that slows them down later. We help founders and CTOs build scalable, secure technology from the start — from MVP development to cloud-native architecture to fundraising-grade security posture.",
+      "Startups need to move fast without building technical debt that slows them down later. We help founders and CTOs build scalable, secure technology from the start - from MVP development to cloud-native architecture to fundraising-grade security posture.",
     icon: Rocket,
     challenges: [
       {
@@ -546,7 +546,7 @@ export const industries: Industry[] = [
     headline:
       "Strategic technology partnerships for organizations at scale",
     description:
-      "Large enterprises need technology partners who operate at their level — capable of strategic advisory, complex multi-system integration, board-level security compliance, and long-term relationship management. We provide the depth, governance, and continuity that enterprise-scale engagements demand.",
+      "Large enterprises need technology partners who operate at their level - capable of strategic advisory, complex multi-system integration, board-level security compliance, and long-term relationship management. We provide the depth, governance, and continuity that enterprise-scale engagements demand.",
     icon: Building2,
     challenges: [
       {

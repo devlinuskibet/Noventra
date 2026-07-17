@@ -101,7 +101,7 @@ export default function InsightsPage() {
               </div>
               <div className={styles.sidebarCard} style={{ borderColor: "var(--color-accent-border)" }}>
                 <h4 className={styles.sidebarTitle}>Featured resource</h4>
-                <p className={styles.sidebarText}>The executive&apos;s guide to technology roadmapping — a comprehensive framework for strategic technology planning.</p>
+                <p className={styles.sidebarText}>The executive&apos;s guide to technology roadmapping - a comprehensive framework for strategic technology planning.</p>
                 <Link href="#" className="btn btn--ghost btn--small" style={{ width: "100%", marginTop: "var(--space-3)" }}>
                   Download guide <ArrowRight size={14} />
                 </Link>

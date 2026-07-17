@@ -20,7 +20,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Noventra Technologies — our mission, values, leadership, and commitment to engineering integrity, security by design, and long-term partnership.",
+    "Learn about Noventra Technologies - our mission, values, leadership, and commitment to engineering integrity, security by design, and long-term partnership.",
 };
 
 const values = [
@@ -29,7 +29,7 @@ const values = [
   { icon: Handshake, title: "Partnership over projects", description: "Success is measured in years of relationship, not single invoices. We invest in your long-term success." },
   { icon: Lightbulb, title: "Clarity over complexity", description: "Technology explained and delivered in a way clients actually understand. We translate, not complicate." },
   { icon: Target, title: "Measurable impact", description: "Every engagement ties back to business outcomes: efficiency gains, revenue growth, and resilience." },
-  { icon: Layers, title: "Continuous innovation", description: "Proactive adoption of AI, automation, and modern architecture — not reactive patch-work." },
+  { icon: Layers, title: "Continuous innovation", description: "Proactive adoption of AI, automation, and modern architecture - not reactive patch-work." },
 ];
 
 const leaders = [
@@ -63,7 +63,7 @@ export default function AboutPage() {
           </h1>
           <p className={styles.heroSubtitle}>
             Too many organizations are underserved by fragmented vendors, reactive support,
-            and technology decisions made without strategic context. We built Noventra to be different —
+            and technology decisions made without strategic context. We built Noventra to be different -
             a single, accountable partner for every layer of technology.
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
               <Heart size={28} className={styles.missionIcon} />
               <h2 className={styles.missionTitle}>Our mission</h2>
               <p className={styles.missionText}>
-                To empower organizations — regardless of size or sector — to plan, build, secure,
+                To empower organizations - regardless of size or sector - to plan, build, secure,
                 automate, and scale their technology with the confidence of a long-term strategic partner,
                 not a one-off vendor.
               </p>
@@ -255,7 +255,7 @@ export default function AboutPage() {
             Ready to partner with us?
           </h2>
           <p style={{ fontSize: "var(--font-size-lg)", opacity: 0.9, marginBottom: "var(--space-8)", maxWidth: "500px", margin: "0 auto var(--space-8)" }}>
-            Start with a conversation. No obligation, no pressure — just a clear understanding
+            Start with a conversation. No obligation, no pressure - just a clear understanding
             of how we can help.
           </p>
           <Link href="/contact/consultation" className="btn btn--white btn--large">

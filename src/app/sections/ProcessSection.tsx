@@ -14,7 +14,7 @@ const steps = [
     icon: PenTool,
     number: "02",
     title: "Design",
-    description: "We architect solutions that align with your goals — from technology roadmaps to detailed technical specifications.",
+    description: "We architect solutions that align with your goals - from technology roadmaps to detailed technical specifications.",
   },
   {
     icon: Rocket,
