@@ -4,10 +4,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
 import CookieConsent from "@/components/CookieConsent";
+import MaintenanceWrapper from "@/components/MaintenanceWrapper";
 
 export const metadata: Metadata = {
   title: {
-    default: "Noventra Technologies — Full-Service Technology Partner",
+    default: "Noventra Technologies - Full-Service Technology Partner",
     template: "%s | Noventra Technologies",
   },
   description:
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Noventra Technologies",
-    title: "Noventra Technologies — Full-Service Technology Partner",
+    title: "Noventra Technologies - Full-Service Technology Partner",
     description:
       "Plan, build, secure, and scale your technology with a long-term strategic partner.",
   },
@@ -54,7 +55,7 @@ export default function RootLayout({
               name: "Noventra Technologies",
               url: "https://noventra.com",
               description:
-                "Full-service technology solutions provider — enterprise software, managed IT, cybersecurity, cloud, AI, networking, data analytics, and digital transformation consultancy.",
+                "Full-service technology solutions provider - enterprise software, managed IT, cybersecurity, cloud, AI, networking, data analytics, and digital transformation consultancy.",
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: "+1-234-567-890",
@@ -65,11 +66,13 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Header />
-        <main id="main-content">{children}</main>
-        <Footer />
-        <ChatWidget />
-        <CookieConsent />
+        <MaintenanceWrapper>
+          <Header />
+          <main id="main-content">{children}</main>
+          <Footer />
+          <ChatWidget />
+          <CookieConsent />
+        </MaintenanceWrapper>
       </body>
     </html>
   );
