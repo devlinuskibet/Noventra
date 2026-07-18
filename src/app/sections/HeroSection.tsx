@@ -12,9 +12,6 @@ export default function HeroSection() {
       <div className={styles.heroGradient} />
       <div className={`container ${styles.heroInner}`}>
         <div className={styles.heroContent}>
-          <span className={styles.heroEyebrow}>
-            Strategic technology partner
-          </span>
           <h1 className={styles.heroTitle}>
             The technology partner behind organizations that can&apos;t afford downtime
           </h1>

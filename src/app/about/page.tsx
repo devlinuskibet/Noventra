@@ -48,7 +48,7 @@ const milestones = [
   { year: "2020", title: "Cloud & AI expansion", description: "Expanded into cloud consulting and AI implementation, earning AWS and Microsoft partner certifications." },
   { year: "2022", title: "Government sector entry", description: "First government digital transformation project, establishing credentials in public sector procurement." },
   { year: "2024", title: "500+ projects delivered", description: "Crossed 500 completed projects with a 97% client retention rate across 10+ industry sectors." },
-  { year: "2026", title: "End-to-end maturity", description: "Strategic technology partner offering every layer of modern enterprise technology, from infrastructure to intelligence." },
+  { year: "2026", title: "End-to-end maturity", description: "Delivering and managing every layer of modern enterprise technology, from infrastructure to intelligence." },
 ];
 
 export default function AboutPage() {
