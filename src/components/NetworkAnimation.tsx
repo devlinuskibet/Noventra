@@ -1,4 +1,4 @@
-// Math Model: Perspective Scaling Focal Length Calculations
+// Physics Concept: Linear Interpolation (Lerp) for Dampened Motion
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
