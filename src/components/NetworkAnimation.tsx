@@ -3,13 +3,18 @@
 import { useEffect, useRef } from "react";
 
 interface VortexParticle {
-  angle: number;
-  radius: number;
+  x: number;
+  y: number;
   z: number;
-  spinSpeed: number;
-  zSpeed: number;
+  vx: number;
+  vy: number;
+  vz: number;
   baseRadius: number;
   color: { r: number; g: number; b: number };
+  pX: number; // Computed projected X per frame
+  pY: number; // Computed projected Y per frame
+  drawScale: number;
+  depth: number;
 }
 
 interface PortalItem {
@@ -156,9 +161,9 @@ export default function NetworkAnimation() {
     let animationFrameId: number;
     let isDestroyed = false;
 
-    // Initialize 85 stars in cylindrical vortex paths
+    // Initialize 75 larger nodes drifting in 3D box space
     const initVortexParticles = (w: number, h: number) => {
-      const count = 85;
+      const count = 75;
       const newParticles: VortexParticle[] = [];
       const colors = [
         { r: 59, g: 130, b: 246 },  // Blue
@@ -168,19 +173,24 @@ export default function NetworkAnimation() {
 
       for (let i = 0; i < count; i++) {
         newParticles.push({
-          angle: Math.random() * Math.PI * 2,
-          radius: 15 + Math.random() * 30,
-          z: Math.random() * 600,
-          spinSpeed: 0.003 + Math.random() * 0.006,
-          zSpeed: 0.8 + Math.random() * 1.2,
-          baseRadius: 1.0 + Math.random() * 1.5,
+          x: (Math.random() - 0.5) * w * 1.2,
+          y: (Math.random() - 0.5) * h * 1.2,
+          z: (Math.random() - 0.5) * 500,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+          vz: (Math.random() - 0.5) * 0.20,
+          baseRadius: 1.6 + Math.random() * 1.6, // Bigger, bolder dots
           color: colors[i % colors.length],
+          pX: 0,
+          pY: 0,
+          drawScale: 1,
+          depth: 0,
         });
       }
       particlesRef.current = newParticles;
     };
 
-    // Initialize 5 portal branding items that emerge when portal opens
+    // Initialize 5 portal items
     const initPortalItems = () => {
       const keywords = [
         { text: "GRAPHIC DESIGN", iconType: "palette", color: { r: 236, g: 72, b: 153 } }, // Pink
@@ -199,7 +209,7 @@ export default function NetworkAnimation() {
           iconType: cat.iconType,
           angle: (i * (Math.PI * 2 / 5)) + Math.random() * 0.4,
           radius: 8 + Math.random() * 12,
-          z: 150 + i * 90 + Math.random() * 30, // Spaced in depth
+          z: 150 + i * 90 + Math.random() * 30,
           spinSpeed: 0.005 + Math.random() * 0.005,
           zSpeed: 1.5 + Math.random() * 0.5,
           color: cat.color,
@@ -236,21 +246,21 @@ export default function NetworkAnimation() {
       const centerX = width / 2;
       const centerY = height / 2;
 
-      // Interpolate mouse tracking coordinates
+      // Interpolate mouse coordinates
       mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.08;
       mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.08;
 
-      // Expand portal intensity when mouse hover triggers
+      // Expand portal intensity on hover
       const targetPortalIntensity = mouseRef.current.active ? 1.0 : 0.0;
       portalIntensityRef.current += (targetPortalIntensity - portalIntensityRef.current) * 0.07;
 
-      // Portal tunnel axis curves towards cursor location
+      // Portal axis curves towards cursor location
       const targetAxisX = mouseRef.current.active ? mouseRef.current.x : centerX;
       const targetAxisY = mouseRef.current.active ? mouseRef.current.y : centerY;
       portalAxisXRef.current += (targetAxisX - portalAxisXRef.current) * 0.06;
       portalAxisYRef.current += (targetAxisY - portalAxisYRef.current) * 0.06;
 
-      // 3D camera rotation tilt targets based on cursor displacement from center (parallax)
+      // 3D camera rotation parallax targets
       const targetRotX = mouseRef.current.active 
         ? (mouseRef.current.y - centerY) * 0.0004
         : Math.sin(time * 0.4) * 0.04;
@@ -266,23 +276,68 @@ export default function NetworkAnimation() {
       const cosY = Math.cos(cameraRotRef.current.y);
       const sinY = Math.sin(cameraRotRef.current.y);
 
-      // Perspective camera settings
       const focalLength = Math.max(width, height) * 0.8;
 
-      // 1. Update Vortex particles
+      // 1. Update Neural Net particles (drift in 3D box, wrapping boundaries)
       const pList = particlesRef.current;
       const pLen = pList.length;
+      
+      const boxW = width * 1.25;
+      const boxH = height * 1.25;
+      const boxD = 500;
+
       for (let i = 0; i < pLen; i++) {
         const p = pList[i];
-        p.z -= p.zSpeed;
-        p.angle += p.spinSpeed;
+        
+        // Organic drift + wave motion
+        p.x += p.vx;
+        p.y += p.vy;
+        p.z += p.vz;
 
-        // Wrap around depth
-        if (p.z <= 10) {
-          p.z = 600;
-          p.angle = Math.random() * Math.PI * 2;
-          p.radius = 15 + Math.random() * 30;
+        // Wave turbulence
+        p.x += Math.sin(time * 0.6 + p.z * 0.01) * 0.15;
+        p.y += Math.cos(time * 0.5 + p.x * 0.01) * 0.15;
+        p.z += Math.sin(time * 0.4 + p.y * 0.01) * 0.10;
+
+        // Wrap around boundaries
+        if (p.x > boxW / 2) p.x = -boxW / 2;
+        else if (p.x < -boxW / 2) p.x = boxW / 2;
+
+        if (p.y > boxH / 2) p.y = -boxH / 2;
+        else if (p.y < -boxH / 2) p.y = boxH / 2;
+
+        if (p.z > boxD / 2) p.z = -boxD / 2;
+        else if (p.z < -boxD / 2) p.z = boxD / 2;
+
+        // Rotate coordinates (tilt)
+        const x1 = p.x * cosY - p.z * sinY;
+        const z1 = p.x * sinY + p.z * cosY;
+        const y2 = p.y * cosX - z1 * sinX;
+        const z2 = p.y * sinX + z1 * cosX;
+
+        // Perspective project
+        const scale = focalLength / Math.max(30, focalLength + z2);
+        let projX = centerX + x1 * scale;
+        let projY = centerY + y2 * scale;
+
+        // Portal warp: push neural network dots away from portal center
+        if (portalIntensityRef.current > 0.05) {
+          const dx = projX - mouseRef.current.x;
+          const dy = projY - mouseRef.current.y;
+          const dist2D = Math.sqrt(dx * dx + dy * dy);
+          const repelRadius = 180 * portalIntensityRef.current;
+          if (dist2D < repelRadius && dist2D > 0) {
+            const force = (1 - dist2D / repelRadius) * 55;
+            projX += (dx / dist2D) * force;
+            projY += (dy / dist2D) * force;
+          }
         }
+
+        // Store computed values
+        p.pX = projX;
+        p.pY = projY;
+        p.drawScale = scale;
+        p.depth = z2;
       }
 
       // 2. Update emerging Portal items
@@ -302,7 +357,6 @@ export default function NetworkAnimation() {
         item.z -= item.zSpeed;
         item.angle += item.spinSpeed;
 
-        // Emerge again from depth
         if (item.z <= 10) {
           item.z = 600;
           const nextCat = keywords[Math.floor(Math.random() * keywords.length)];
@@ -316,17 +370,17 @@ export default function NetworkAnimation() {
       // Clear screen
       ctx.clearRect(0, 0, width, height);
 
-      // Draw Wormhole portal background circle void
+      // Draw Wormhole Portal void circle behind cursor
       const currentPortalRadius = 170 * portalIntensityRef.current;
       if (currentPortalRadius > 5) {
         const portalGrad = ctx.createRadialGradient(
           mouseRef.current.x, mouseRef.current.y, 0,
           mouseRef.current.x, mouseRef.current.y, currentPortalRadius
         );
-        portalGrad.addColorStop(0, "rgba(10, 15, 28, 0.95)"); // Deep glass void
+        portalGrad.addColorStop(0, "rgba(10, 15, 28, 0.95)"); // Dark glass void
         portalGrad.addColorStop(0.4, "rgba(15, 23, 42, 0.88)");
-        portalGrad.addColorStop(0.7, "rgba(59, 130, 246, 0.18)"); // Neon blue portal outline
-        portalGrad.addColorStop(0.9, "rgba(139, 92, 246, 0.05)"); // Soft violet glow ring
+        portalGrad.addColorStop(0.7, "rgba(59, 130, 246, 0.18)"); // Indigo/blue border ring
+        portalGrad.addColorStop(0.9, "rgba(139, 92, 246, 0.05)"); 
         portalGrad.addColorStop(1, "rgba(139, 92, 246, 0)");
 
         ctx.fillStyle = portalGrad;
@@ -334,7 +388,6 @@ export default function NetworkAnimation() {
         ctx.arc(mouseRef.current.x, mouseRef.current.y, currentPortalRadius, 0, Math.PI * 2);
         ctx.fill();
         
-        // Add a micro-glowing border stroke
         ctx.strokeStyle = `rgba(6, 182, 212, ${portalIntensityRef.current * 0.12})`;
         ctx.lineWidth = 1.5;
         ctx.beginPath();
@@ -342,85 +395,90 @@ export default function NetworkAnimation() {
         ctx.stroke();
       }
 
-      // Compile everything to sort by depth (Painter's algorithm)
+      // Draw Neural Network connection lines
+      // We draw them here so they lay under the nodes.
+      // Opacity is properly visible and bold in the foreground.
+      const max3DDist = 185;
+      for (let i = 0; i < pLen; i++) {
+        const p1 = pList[i];
+        for (let j = i + 1; j < pLen; j++) {
+          const p2 = pList[j];
+
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dz = p1.z - p2.z;
+          const dist3D = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+          if (dist3D < max3DDist) {
+            const avgDepth = (p1.depth + p2.depth) / 2;
+            const depthFactor = Math.max(0.04, 1 - (avgDepth + 250) / 500); // 3D box depth factor
+            const distFactor = 1 - dist3D / max3DDist;
+            
+            // Proper visible line opacity (raised multiplier to 0.38 for maximum clarity)
+            const alpha = distFactor * 0.38 * depthFactor;
+
+            if (alpha > 0.01) {
+              const avgR = Math.round((p1.color.r + p2.color.r) / 2);
+              const avgG = Math.round((p1.color.g + p2.color.g) / 2);
+              const avgB = Math.round((p1.color.b + p2.color.b) / 2);
+
+              ctx.beginPath();
+              ctx.moveTo(p1.pX, p1.pY);
+              ctx.lineTo(p2.pX, p2.pY);
+              ctx.strokeStyle = `rgba(${avgR}, ${avgG}, ${avgB}, ${alpha})`;
+              ctx.lineWidth = 0.6 * ((p1.drawScale + p2.drawScale) / 2);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      // Compile nodes and portal items to sort by depth (Painter's algorithm)
       interface Renderable {
         depth: number;
         render: () => void;
       }
       const renderables: Renderable[] = [];
 
-      // Add stars render steps
+      // Add stars/nodes render steps
       for (let i = 0; i < pLen; i++) {
         const p = pList[i];
-        
-        // Transform cylindrical to Cartesian 3D coordinates
-        const spiralRadius = p.radius + ((600 - p.z) / 600) * (width * 0.38);
-        const x = Math.cos(p.angle) * spiralRadius;
-        const y = Math.sin(p.angle) * spiralRadius;
-        const z = p.z;
-
-        // Yaw Y-rotation
-        const x1 = x * cosY - z * sinY;
-        const z1 = x * sinY + z * cosY;
-        // Pitch X-rotation
-        const y2 = y * cosX - z1 * sinX;
-        const z2 = y * sinX + z1 * cosX;
-
-        // Project to screen coordinate
-        const scale = focalLength / Math.max(30, focalLength + z2);
-        let projX = portalAxisXRef.current + x1 * scale;
-        let projY = portalAxisYRef.current + y2 * scale;
-
-        // Wormhole parting push: part particles away from cursor center void
-        if (portalIntensityRef.current > 0.05) {
-          const dx = projX - mouseRef.current.x;
-          const dy = projY - mouseRef.current.y;
-          const dist2D = Math.sqrt(dx * dx + dy * dy);
-          const repelRadius = 180 * portalIntensityRef.current;
-          if (dist2D < repelRadius && dist2D > 0) {
-            const force = (1 - dist2D / repelRadius) * 45;
-            projX += (dx / dist2D) * force;
-            projY += (dy / dist2D) * force;
-          }
-        }
-
         renderables.push({
-          depth: z2,
+          depth: p.depth,
           render: () => {
-            const r = p.baseRadius * scale;
-            const depthAlpha = Math.max(0.04, 1 - (z2 + 200) / 800);
-            const alpha = Math.max(0.06, 0.6 * scale) * depthAlpha * (1 + portalIntensityRef.current * 0.4);
+            const r = p.baseRadius * p.drawScale;
+            const depthAlpha = Math.max(0.04, 1 - (p.depth + 250) / 500);
+            const alpha = Math.max(0.08, 0.75 * p.drawScale) * depthAlpha;
 
             ctx.beginPath();
-            ctx.arc(projX, projY, r, 0, Math.PI * 2);
+            ctx.arc(p.pX, p.pY, r, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha})`;
             ctx.fill();
 
-            // Tiny outer glow for closer stars
-            if (z2 < 60) {
+            // Bold glow circles around close-up neural nodes
+            if (p.depth < 80) {
               ctx.beginPath();
-              ctx.arc(projX, projY, r + 2, 0, Math.PI * 2);
-              ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha * 0.12})`;
+              ctx.arc(p.pX, p.pY, r + 4, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${alpha * 0.18})`;
               ctx.fill();
             }
           }
         });
       }
 
-      // Add portal brand items render steps (emerge from wormhole)
+      // Add portal concept items render steps (emerge from center)
       for (let i = 0; i < iLen; i++) {
         const item = iList[i];
         
-        // Emerge close to center, swirl outward as they approach screen
+        // Emerge swirling from portal center
         const swirlRadius = item.radius + ((600 - item.z) / 600) * (width * 0.16);
         const x = Math.cos(item.angle) * swirlRadius;
         const y = Math.sin(item.angle) * swirlRadius;
         const z = item.z;
 
-        // Yaw Y-rotation
+        // Parallax rotations
         const x1 = x * cosY - z * sinY;
         const z1 = x * sinY + z * cosY;
-        // Pitch X-rotation
         const y2 = y * cosX - z1 * sinX;
         const z2 = y * sinX + z1 * cosX;
 
@@ -446,10 +504,9 @@ export default function NetworkAnimation() {
               
               drawIcon(ctx, projX, projY, itemSize, item.iconType);
               
-              // Reset shadow blur
-              ctx.shadowBlur = 0;
+              ctx.shadowBlur = 0; // Reset
 
-              // 2. Draw label text (with a dark background outline to prevent swallowing by text behind it)
+              // 2. Draw label text (with a dark background outline to prevent swallowing)
               const fontSize = Math.max(7, Math.round(9 * scale));
               ctx.font = `800 ${fontSize}px "SFMono-Regular", Consolas, Menlo, monospace`;
               ctx.textAlign = "center";
@@ -465,7 +522,7 @@ export default function NetworkAnimation() {
               ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.95})`;
               ctx.fillText(item.text, projX, textY);
               
-              // Underline text decoration stripe
+              // Underline decoration stripe
               ctx.fillStyle = `rgba(${item.color.r}, ${item.color.g}, ${item.color.b}, ${alpha * 0.85})`;
               ctx.fillRect(projX - (item.text.length * fontSize * 0.28), textY + 4, item.text.length * fontSize * 0.56, 1);
             }
