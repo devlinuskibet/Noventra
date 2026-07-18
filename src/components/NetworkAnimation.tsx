@@ -1,4 +1,4 @@
-// Style Definition: HSL Color Palette Mapping
+// Particle State: Initializing Node ID Generator
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
