@@ -1,4 +1,4 @@
-// Highlight HUD: Rotate Reticle Coordinate Transformations
+// HUD Details: Semi-transparent Glass Info Card Overlay
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
