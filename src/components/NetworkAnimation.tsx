@@ -1,4 +1,4 @@
-// Design Formula: Camera Pitch Rotation on the X-Axis
+// Math Model: Perspective Scaling Focal Length Calculations
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
