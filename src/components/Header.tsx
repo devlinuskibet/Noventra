@@ -90,12 +90,7 @@ export default function Header() {
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
         <Link href="/" className={styles.logo} aria-label="Noventra Technologies home">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect width="32" height="32" rx="8" fill="var(--color-accent)" />
-            <path d="M8 22V10l8 12V10" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            <circle cx="24" cy="16" r="3" fill="white" opacity="0.6" />
-          </svg>
-          <span className={styles.logoText}>Noventra</span>
+          <img src="/logo.png" alt="Noventra Technologies" className={styles.logoImage} />
         </Link>
 
         {/* Desktop Nav */}

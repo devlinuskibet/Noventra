@@ -23,10 +23,14 @@
   gap: var(--space-3);
   text-decoration: none;
   color: var(--color-text-primary);
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  letter-spacing: var(--letter-spacing-tight);
   margin-bottom: var(--space-5);
+}
+
+.logoImage {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .brandDescription {

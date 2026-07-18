@@ -34,10 +34,11 @@
   flex-shrink: 0;
 }
 
-.logoText {
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  letter-spacing: var(--letter-spacing-tight);
+.logoImage {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 /* Desktop Nav */

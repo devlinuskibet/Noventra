@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   },
   description:
     "Noventra Technologies is the technology partner enterprises, institutions, and ambitious organizations turn to for software development, cloud computing, cybersecurity, managed IT, AI, data analytics, and digital transformation.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   keywords: [
     "technology partner",
     "enterprise software",
