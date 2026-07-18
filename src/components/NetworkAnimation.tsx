@@ -1,4 +1,4 @@
-// Architectural Note: 3D Coordinate Mapping and Node Projections
+// Design Formula: Camera Yaw Rotation on the Y-Axis
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
