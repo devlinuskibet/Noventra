@@ -1,4 +1,4 @@
-// Highlight HUD: Circular Dash Reticle Geometry
+// Highlight HUD: Rotate Reticle Coordinate Transformations
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
