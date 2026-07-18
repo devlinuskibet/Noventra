@@ -1,4 +1,4 @@
-// Physics Concept: Linear Interpolation (Lerp) for Dampened Motion
+// Animation Loop: requestAnimationFrame Timing Alignment
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
