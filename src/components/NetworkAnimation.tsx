@@ -1,4 +1,4 @@
-// Physics Perturbation: Mouse Gravity Repulsion Fields
+// Style Definition: HSL Color Palette Mapping
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
