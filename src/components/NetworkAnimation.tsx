@@ -28,6 +28,19 @@ interface PortalItem {
   color: { r: number; g: number; b: number };
 }
 
+// Utility to draw rounded rectangles on canvas
+function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, radius: number) {
+  if (width < 2 * radius) radius = width / 2;
+  if (height < 2 * radius) radius = height / 2;
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.arcTo(x + width, y, x + width, y + height, radius);
+  ctx.arcTo(x + width, y + height, x, y + height, radius);
+  ctx.arcTo(x, y + height, x, y, radius);
+  ctx.arcTo(x, y, x + width, y, radius);
+  ctx.closePath();
+}
+
 // Custom vector canvas path renderers for brand icons
 function drawCloud(ctx: CanvasRenderingContext2D, x: number, y: number, size: number) {
   ctx.beginPath();
@@ -466,7 +479,7 @@ export default function NetworkAnimation() {
         });
       }
 
-      // Add portal concept items render steps (emerge from center)
+      // Add portal concept items render steps (emerge from center) wrapped in glass capsule badges
       for (let i = 0; i < iLen; i++) {
         const item = iList[i];
         
@@ -494,37 +507,52 @@ export default function NetworkAnimation() {
             const alpha = portalIntensityRef.current * depthAlpha * 0.85;
 
             if (alpha > 0.02) {
-              const itemSize = Math.max(8, 20 * scale);
+              // Scale size variables dynamically in 3D space
+              const itemSize = Math.max(8, 14 * scale);
+              const fontSize = Math.max(8, Math.round(11 * scale));
 
-              // 1. Draw glowing vector icon
+              // Use premium Inter / system sans-serif typography for maximum readability
+              ctx.font = `bold ${fontSize}px Inter, system-ui, -apple-system, sans-serif`;
+              ctx.textAlign = "left";
+              ctx.textBaseline = "middle";
+
+              const textWidth = ctx.measureText(item.text).width;
+
+              // Capsule badge geometry and layout sizing
+              const gap = 8 * scale;
+              const padX = 14 * scale;
+              const padY = 8 * scale;
+
+              const cardW = itemSize + gap + textWidth + padX * 2;
+              const cardH = Math.max(itemSize, fontSize) + padY * 2;
+
+              const cardX = projX - cardW / 2;
+              const cardY = projY - cardH / 2;
+
+              // 1. Draw rounded capsule card container (solid dark void fills)
+              ctx.fillStyle = `rgba(10, 15, 28, ${alpha * 0.96})`;
+              roundRect(ctx, cardX, cardY, cardW, cardH, 6 * scale);
+              ctx.fill();
+
+              // Glowing thin borders based on the concept category colors
+              ctx.strokeStyle = `rgba(${item.color.r}, ${item.color.g}, ${item.color.b}, ${alpha * 0.65})`;
+              ctx.lineWidth = 1.2 * scale;
+              ctx.stroke();
+
+              // 2. Draw vector icon inside the card (on the left side)
               ctx.strokeStyle = `rgba(${item.color.r}, ${item.color.g}, ${item.color.b}, ${alpha})`;
               ctx.lineWidth = 1.5 * scale;
-              ctx.shadowColor = `rgba(${item.color.r}, ${item.color.g}, ${item.color.b}, 0.4)`;
+              ctx.shadowColor = `rgba(${item.color.r}, ${item.color.g}, ${item.color.b}, 0.45)`;
               ctx.shadowBlur = 8 * scale;
               
-              drawIcon(ctx, projX, projY, itemSize, item.iconType);
+              const iconX = cardX + padX + itemSize / 2;
+              drawIcon(ctx, iconX, projY, itemSize, item.iconType);
               
-              ctx.shadowBlur = 0; // Reset
+              ctx.shadowBlur = 0; // Reset canvas shadows
 
-              // 2. Draw label text (with a dark background outline to prevent swallowing)
-              const fontSize = Math.max(7, Math.round(9 * scale));
-              ctx.font = `800 ${fontSize}px "SFMono-Regular", Consolas, Menlo, monospace`;
-              ctx.textAlign = "center";
-              
-              const textY = projY + itemSize * 0.7 + 10;
-              
-              // Dark text outline stroke for extreme contrast
-              ctx.strokeStyle = `rgba(10, 15, 28, ${alpha * 0.95})`;
-              ctx.lineWidth = 3;
-              ctx.strokeText(item.text, projX, textY);
-              
-              // Core text fill
-              ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.95})`;
-              ctx.fillText(item.text, projX, textY);
-              
-              // Underline decoration stripe
-              ctx.fillStyle = `rgba(${item.color.r}, ${item.color.g}, ${item.color.b}, ${alpha * 0.85})`;
-              ctx.fillRect(projX - (item.text.length * fontSize * 0.28), textY + 4, item.text.length * fontSize * 0.56, 1);
+              // 3. Draw text label (on the right side)
+              ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.98})`;
+              ctx.fillText(item.text, cardX + padX + itemSize + gap, projY);
             }
           }
         });
