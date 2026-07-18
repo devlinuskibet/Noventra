@@ -1,4 +1,4 @@
-// Rendering Effect: Cinematic Node Depth-of-Field Blur
+// Highlight HUD: Circular Dash Reticle Geometry
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
