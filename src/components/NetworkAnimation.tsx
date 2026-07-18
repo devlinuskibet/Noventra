@@ -1,4 +1,4 @@
-// Design Formula: Camera Yaw Rotation on the Y-Axis
+// Design Formula: Camera Pitch Rotation on the X-Axis
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
