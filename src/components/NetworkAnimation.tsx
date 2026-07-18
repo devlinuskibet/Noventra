@@ -1,4 +1,4 @@
-// Rendering Path: Multi-Node Connection Tracing
+// Optimization: Averaged Color Connection Path Drawing
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
