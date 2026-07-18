@@ -1,4 +1,4 @@
-// Rendering Order: Painter's Algorithm Depth Sorting
+// Rendering Path: Multi-Node Connection Tracing
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
