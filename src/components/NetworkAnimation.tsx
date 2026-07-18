@@ -1,4 +1,4 @@
-// Interaction Logic: Touch Event Bounds Check
+// Physics Perturbation: Mouse Gravity Repulsion Fields
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
