@@ -1,4 +1,4 @@
-// Interaction Logic: Window Event Listener Integration
+// Interaction Logic: Touch Event Bounds Check
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
