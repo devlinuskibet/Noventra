@@ -1,4 +1,4 @@
-// Animation Loop: requestAnimationFrame Timing Alignment
+// Interaction Logic: Window Event Listener Integration
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
