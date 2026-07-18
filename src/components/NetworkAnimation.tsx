@@ -1,4 +1,4 @@
-// Boundary Calculation: Three-Dimensional Box wrapping
+// Rendering Order: Painter's Algorithm Depth Sorting
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
