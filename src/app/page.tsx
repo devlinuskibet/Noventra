@@ -44,7 +44,7 @@ export default function HomePage() {
             <span className="eyebrow">Why Noventra</span>
             <h2 className="section-title">What sets us apart</h2>
             <p className="section-subtitle">
-              We are not a single-service vendor. We are a full-service technology partner,
+              We are not a single-service vendor. We are a strategic technology partner,
               built to deliver across every layer of modern infrastructure.
             </p>
           </div>

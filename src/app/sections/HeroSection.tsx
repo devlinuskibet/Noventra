@@ -13,7 +13,7 @@ export default function HeroSection() {
       <div className={`container ${styles.heroInner}`}>
         <div className={styles.heroContent}>
           <span className={styles.heroEyebrow}>
-            Full-service technology partner
+            Strategic technology partner
           </span>
           <h1 className={styles.heroTitle}>
             The technology partner behind organizations that can&apos;t afford downtime

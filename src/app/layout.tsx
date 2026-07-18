@@ -8,7 +8,7 @@ import MaintenanceWrapper from "@/components/MaintenanceWrapper";
 
 export const metadata: Metadata = {
   title: {
-    default: "Noventra Technologies - Full-Service Technology Partner",
+    default: "Noventra Technologies - Strategic Technology Partner",
     template: "%s | Noventra Technologies",
   },
   description:
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Noventra Technologies",
-    title: "Noventra Technologies - Full-Service Technology Partner",
+    title: "Noventra Technologies - Strategic Technology Partner",
     description:
       "Plan, build, secure, and scale your technology with a long-term strategic partner.",
   },
