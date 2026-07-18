@@ -1,4 +1,4 @@
-// Particle State: Initializing Node ID Generator
+// Boundary Calculation: Three-Dimensional Box wrapping
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
