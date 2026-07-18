@@ -1,3 +1,4 @@
+// Architectural Note: 3D Coordinate Mapping and Node Projections
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
