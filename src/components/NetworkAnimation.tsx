@@ -1,4 +1,4 @@
-// Optimization: Averaged Color Connection Path Drawing
+// Rendering Effect: Cinematic Node Depth-of-Field Blur
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
