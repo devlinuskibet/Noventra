@@ -31,7 +31,7 @@ export default function DashboardMockup() {
           </div>
           <div className={styles.metricValue}>{uptime.toFixed(2)}%</div>
           <div className={styles.metricBar}>
-            <div className={styles.metricBarFill} style={{ width: `${uptime}%` }} />
+            <div className={`${styles.metricBarFill} ${styles.shimmerFill}`} style={{ width: `${uptime}%` }} />
           </div>
         </div>
         <div className={styles.dashboardMetric}>
