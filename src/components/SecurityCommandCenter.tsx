@@ -140,11 +140,35 @@ const certsData: Certification[] = [
   }
 ];
 
+const initialNodes = [
+  { id: "us-east", name: "US East Gateway", provider: "AWS", region: "us-east-1", status: "Operational", ping: 14, load: 32 },
+  { id: "us-west", name: "US West Primary", provider: "GCP", region: "us-west1", status: "Operational", ping: 28, load: 19 },
+  { id: "eu-west", name: "Europe Edge Portal", provider: "Azure", region: "westeurope", status: "Operational", ping: 42, load: 45 },
+  { id: "ap-east", name: "Asia-Pacific Core", provider: "AWS", region: "ap-east-1", status: "Operational", ping: 89, load: 58 },
+  { id: "sa-east", name: "South America Node", provider: "GCP", region: "southamerica-east1", status: "Operational", ping: 124, load: 27 },
+  { id: "af-south", name: "Africa Edge Node", provider: "AWS", region: "af-south-1", status: "Operational", ping: 168, load: 14 }
+];
+
 export default function SecurityCommandCenter() {
   const [activeTab, setActiveTab] = useState<TabType>("compliance");
   const [selectedCert, setSelectedCert] = useState<string>("iso27001");
+  const [nodes, setNodes] = useState(initialNodes);
 
   const currentCert = certsData.find((c) => c.id === selectedCert) || certsData[0];
+
+  useEffect(() => {
+    if (activeTab !== "nodes") return;
+    const interval = setInterval(() => {
+      setNodes((prevNodes) =>
+        prevNodes.map((node) => ({
+          ...node,
+          ping: Math.max(4, node.ping + Math.floor(Math.random() * 7) - 3),
+          load: Math.min(99, Math.max(5, node.load + Math.floor(Math.random() * 9) - 4)),
+        }))
+      );
+    }, 1500);
+    return () => clearInterval(interval);
+  }, [activeTab]);
 
   return (
     <div className={styles.commandCenter}>
@@ -236,8 +260,39 @@ export default function SecurityCommandCenter() {
           </div>
         )}
         {activeTab === "nodes" && (
-          <div className={styles.tabPane}>
-            <p>Infrastructure nodes monitoring loading...</p>
+          <div className={styles.nodesLayout}>
+            <div className={styles.nodesGrid}>
+              {nodes.map((node) => (
+                <div key={node.id} className={styles.nodeCard}>
+                  <div className={styles.nodeCardHeader}>
+                    <div className={styles.nodeNameGroup}>
+                      <span className={styles.nodeDot} />
+                      <span className={styles.nodeName}>{node.name}</span>
+                    </div>
+                    <span className={`${styles.providerBadge} ${styles[node.provider.toLowerCase()]}`}>
+                      {node.provider}
+                    </span>
+                  </div>
+                  <div className={styles.nodeMeta}>
+                    <span className={styles.nodeRegion}>{node.region}</span>
+                    <span className={styles.nodeStatusText}>{node.status}</span>
+                  </div>
+                  <div className={styles.nodeStats}>
+                    <div className={styles.nodeStat}>
+                      <span className={styles.nodeStatLabel}>LATENCY</span>
+                      <span className={styles.nodeStatValue}>{node.ping}ms</span>
+                    </div>
+                    <div className={styles.nodeStat}>
+                      <span className={styles.nodeStatLabel}>SYS LOAD</span>
+                      <span className={styles.nodeStatValue}>{node.load}%</span>
+                    </div>
+                  </div>
+                  <div className={styles.nodeLoadBar}>
+                    <div className={styles.nodeLoadBarFill} style={{ width: `${node.load}%` }} />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
         {activeTab === "logs" && (
