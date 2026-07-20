@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Shield, Server, Terminal, CheckCircle, AlertTriangle, ArrowRight, RefreshCw } from "lucide-react";
 import styles from "../app/page.module.css";
 
@@ -140,6 +140,19 @@ const certsData: Certification[] = [
   }
 ];
 
+const logTemplates = [
+  "ISO 27001 control group A.12.6.1 validated successfully.",
+  "IP block rule active: blocked request from suspicious host.",
+  "SSL handshakes active: integrity score verified at 100%.",
+  "SOC 2 continuous auditing agent: 0 exceptions found.",
+  "Auto-scaling gateway trigger checked: Capacity normal.",
+  "DDoS shielding report: 0 active threats detected.",
+  "Database replica replication lag: <10ms sync active.",
+  "Global CDN cache warm rate: 98.4% efficiency.",
+  "IAM policies integrity check: all permissions compliant.",
+  "Threat intelligence feed synced: database updated."
+];
+
 const initialNodes = [
   { id: "us-east", name: "US East Gateway", provider: "AWS", region: "us-east-1", status: "Operational", ping: 14, load: 32 },
   { id: "us-west", name: "US West Primary", provider: "GCP", region: "us-west1", status: "Operational", ping: 28, load: 19 },
@@ -169,6 +182,40 @@ export default function SecurityCommandCenter() {
     }, 1500);
     return () => clearInterval(interval);
   }, [activeTab]);
+
+  const [logs, setLogs] = useState<string[]>([]);
+  const terminalEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (activeTab !== "logs") return;
+    
+    if (logs.length === 0) {
+      const now = new Date();
+      const initialLogs = Array.from({ length: 6 }).map((_, i) => {
+        const time = new Date(now.getTime() - (6 - i) * 3000);
+        const stamp = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const template = logTemplates[i % logTemplates.length];
+        return `[${stamp}] [SEC-OPS] ${template}`;
+      });
+      setLogs(initialLogs);
+      return;
+    }
+
+    const interval = setInterval(() => {
+      const stamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const template = logTemplates[Math.floor(Math.random() * logTemplates.length)];
+      const nextLog = `[${stamp}] [SEC-OPS] ${template}`;
+      setLogs((prev) => [...prev.slice(-12), nextLog]);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [activeTab, logs.length]);
+
+  useEffect(() => {
+    if (activeTab === "logs" && terminalEndRef.current) {
+      terminalEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [logs, activeTab]);
 
   return (
     <div className={styles.commandCenter}>
@@ -296,8 +343,24 @@ export default function SecurityCommandCenter() {
           </div>
         )}
         {activeTab === "logs" && (
-          <div className={styles.tabPane}>
-            <p>Live terminal logs loading...</p>
+          <div className={styles.terminalContainer}>
+            <div className={styles.terminalHeader}>
+              <div className={styles.terminalDots}>
+                <span />
+                <span />
+                <span />
+              </div>
+              <span className={styles.terminalTitle}>secops-live-feed ~ bash</span>
+            </div>
+            <div className={styles.terminalBody}>
+              {logs.map((log, idx) => (
+                <div key={idx} className={styles.terminalLine}>
+                  <span className={styles.terminalPrompt}>$ </span>
+                  <span>{log}</span>
+                </div>
+              ))}
+              <div ref={terminalEndRef} />
+            </div>
           </div>
         )}
       </div>
