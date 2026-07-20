@@ -16,6 +16,7 @@ import StatsSection from "./sections/StatsSection";
 import TestimonialsSection from "./sections/TestimonialsSection";
 import ProcessSection from "./sections/ProcessSection";
 import DashboardMockup from "@/components/DashboardMockup";
+import SecurityCommandCenter from "@/components/SecurityCommandCenter";
 import styles from "./page.module.css";
 
 export default function HomePage() {
@@ -182,34 +183,10 @@ export default function HomePage() {
       {/* Section 8: Testimonials */}
       <TestimonialsSection testimonials={testimonials} />
 
-      {/* Section 9: Certifications */}
-      <section className={`section ${styles.certSection}`}>
-        <div className="container text-center">
-          <span className="eyebrow">Certifications & partnerships</span>
-          <h2 className="section-title" style={{ marginBottom: "var(--space-4)" }}>
-            Certified. Compliant. Accountable.
-          </h2>
-          <p className="section-subtitle mx-auto" style={{ marginBottom: "var(--space-12)" }}>
-            Our certifications and partnerships demonstrate our commitment to the highest standards
-            of security, quality, and technical excellence.
-          </p>
-          <div className={styles.certGrid}>
-            {[
-              "ISO 27001 - Information Security",
-              "ISO 9001 - Quality Management",
-              "SOC 2 Type II - Trust Services",
-              "AWS Advanced Partner",
-              "Microsoft Gold Partner",
-              "Google Cloud Partner",
-              "Cisco Certified Partner",
-              "Fortinet Partner",
-            ].map((cert) => (
-              <div key={cert} className={styles.certBadge}>
-                <Shield size={20} strokeWidth={1.5} />
-                <span>{cert}</span>
-              </div>
-            ))}
-          </div>
+      {/* Section 9: Security Command Center */}
+      <section className={`section ${styles.commandCenterSection}`}>
+        <div className="container">
+          <SecurityCommandCenter />
         </div>
       </section>
 
