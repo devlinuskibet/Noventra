@@ -44,17 +44,23 @@ export default function DashboardMockup() {
           </div>
         </div>
         <div className={styles.dashboardMetric}>
-          <div className={styles.metricLabel}>Threat Detection</div>
+          <div className={styles.metricLabel} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            Threat Detection
+            <span className={styles.livePulse} style={{ backgroundColor: "#10B981", animationDelay: "0.5s" }} />
+          </div>
           <div className={styles.metricValue}>Real-time</div>
           <div className={styles.metricBar}>
-            <div className={styles.metricBarFill} style={{ width: "100%" }} />
+            <div className={`${styles.metricBarFill} ${styles.scanFill}`} style={{ width: "100%" }} />
           </div>
         </div>
         <div className={styles.dashboardMetric}>
-          <div className={styles.metricLabel}>Incident Response</div>
+          <div className={styles.metricLabel} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            Incident Response
+            <span className={styles.livePulse} style={{ backgroundColor: "#3B82F6", animationDelay: "1.5s" }} />
+          </div>
           <div className={styles.metricValue}>&lt; 15 min</div>
           <div className={styles.metricBar}>
-            <div className={styles.metricBarFill} style={{ width: "92%" }} />
+            <div className={`${styles.metricBarFill} ${styles.responsePulse}`} style={{ width: "92%" }} />
           </div>
         </div>
         <div className={styles.dashboardMetric}>
