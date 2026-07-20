@@ -1,0 +1,95 @@
+.pageContainer {
+  padding: 140px 0 100px;
+  background-color: var(--color-base-900);
+  min-height: 100vh;
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.layoutWrapper {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+/* Left Panel styles */
+.formPanel {
+  background: #0d1730;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-xl);
+  padding: var(--space-10);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.headerArea {
+  margin-bottom: var(--space-8);
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: var(--space-6);
+}
+
+.eyebrow {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  letter-spacing: var(--letter-spacing-wider);
+  font-weight: 600;
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+  line-height: var(--line-height-tight);
+}
+
+.description {
+  font-size: var(--font-size-sm);
+  color: #94a3b8;
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.formContent {
+  position: relative;
+}
+
+/* Right Panel styles */
+.sidebarPanel {
+  position: sticky;
+  top: 100px;
+}
+
+.sidebarCard {
+  background: #080c1a;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive grid rules */
+@media (max-width: 1024px) {
+  .layoutWrapper {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  
+  .sidebarPanel {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .pageContainer {
+    padding: 100px 0 60px;
+  }
+  
+  .formPanel {
+    padding: var(--space-6);
+  }
+}
