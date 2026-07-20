@@ -782,3 +782,498 @@
     filter: brightness(1.15);
   }
 }
+
+/* ---- Security Command Center Styles ---- */
+.commandCenterSection {
+  background: var(--color-base-900) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding: var(--space-20) 0;
+}
+
+.commandCenter {
+  width: 100%;
+  background: #0b1329;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  font-family: inherit;
+}
+
+.commandHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-6) var(--space-8);
+  border-bottom: 1px solid #1e293b;
+  background: #0d1730;
+}
+
+.commandTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.commandTitleGroup h3 {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-white) !important;
+  margin: 0;
+}
+
+.pulseIndicator {
+  width: 8px;
+  height: 8px;
+  background-color: #10B981;
+  border-radius: 50%;
+  animation: pulseColor 2s infinite ease-in-out;
+}
+
+.commandSubtitle {
+  font-size: var(--font-size-xs);
+  color: #64748b;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  font-weight: 600;
+}
+
+.commandTabs {
+  display: flex;
+  background: #070c1a;
+  border-bottom: 1px solid #1e293b;
+  padding: 0 var(--space-4);
+}
+
+.tabButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #64748b;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tabButton span {
+  font-weight: 500;
+}
+
+.tabButton:hover {
+  color: var(--color-white);
+}
+
+.tabActive {
+  color: var(--color-accent) !important;
+  border-bottom-color: var(--color-accent) !important;
+}
+
+.commandContent {
+  padding: var(--space-8);
+  min-height: 440px;
+}
+
+/* Compliance Layout */
+.complianceLayout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--space-8);
+}
+
+.certList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: var(--space-2);
+}
+
+.certList::-webkit-scrollbar {
+  width: 4px;
+}
+.certList::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: var(--radius-full);
+}
+
+.certCard {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: #0d1730;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.certCard:hover {
+  border-color: #3b82f6;
+  background: #101f3f;
+}
+
+.certCardActive {
+  border-color: #3b82f6 !important;
+  background: #11224d !important;
+}
+
+.certIcon {
+  color: #3b82f6;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.certMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.certName {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.certCategory {
+  font-size: var(--font-size-xs);
+  color: #64748b;
+}
+
+.certDetails {
+  background: #070c1a;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.detailsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: var(--space-4);
+}
+
+.detailsHeader h4 {
+  font-size: var(--font-size-md);
+  color: var(--color-white) !important;
+  margin: 0;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.detailsField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.fieldLabel {
+  font-size: var(--font-size-xs);
+  color: #64748b;
+  letter-spacing: var(--letter-spacing-wider);
+  font-weight: 600;
+}
+
+.fieldValue {
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  font-family: monospace;
+}
+
+.checksSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.checksSection h5 {
+  font-size: var(--font-size-xs);
+  color: #64748b;
+  margin: 0;
+  letter-spacing: var(--letter-spacing-wider);
+  font-weight: 600;
+}
+
+.checksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.checkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: #94a3b8;
+}
+
+.checkIndicator {
+  color: #10b981;
+  font-weight: bold;
+}
+
+/* Nodes Layout */
+.nodesLayout {
+  width: 100%;
+}
+
+.nodesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.nodeCard {
+  background: #0d1730;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: all var(--transition-fast);
+}
+
+.nodeCard:hover {
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+.nodeCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nodeNameGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nodeDot {
+  width: 6px;
+  height: 6px;
+  background-color: #10b981;
+  border-radius: 50%;
+  animation: pulseColor 1.5s infinite ease-in-out;
+}
+
+.nodeName {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.providerBadge {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.aws {
+  background: rgba(255, 153, 0, 0.15);
+  color: #ff9900;
+}
+
+.gcp {
+  background: rgba(66, 133, 244, 0.15);
+  color: #4285f4;
+}
+
+.azure {
+  background: rgba(0, 120, 212, 0.15);
+  color: #0078d4;
+}
+
+.nodeMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  color: #64748b;
+}
+
+.nodeStatusText {
+  color: #10b981;
+  font-weight: 500;
+}
+
+.nodeStats {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #1e293b;
+  padding-top: var(--space-3);
+}
+
+.nodeStat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nodeStatLabel {
+  font-size: var(--font-size-xs);
+  color: #64748b;
+  font-weight: 600;
+}
+
+.nodeStatValue {
+  font-size: var(--font-size-sm);
+  font-family: monospace;
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.nodeLoadBar {
+  height: 4px;
+  background: #1e293b;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.nodeLoadBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  transition: width 1.2s ease-in-out;
+}
+
+/* Terminal Container */
+.terminalContainer {
+  background: #050811;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  background: #0d1326;
+  border-bottom: 1px solid #1e293b;
+}
+
+.terminalDots {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.terminalDots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.terminalDots span:nth-child(1) { background: #EF4444; }
+.terminalDots span:nth-child(2) { background: #F59E0B; }
+.terminalDots span:nth-child(3) { background: #10B981; }
+
+.terminalTitle {
+  font-size: var(--font-size-xs);
+  color: #64748b;
+  font-family: monospace;
+}
+
+.terminalBody {
+  padding: var(--space-6);
+  height: 300px;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: var(--font-size-sm);
+  color: #38bdf8;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.terminalBody::-webkit-scrollbar {
+  width: 6px;
+}
+.terminalBody::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: var(--radius-full);
+}
+
+.terminalLine {
+  line-height: var(--line-height-relaxed);
+  animation: fadeInLog 0.3s ease both;
+}
+
+.terminalPrompt {
+  color: #a855f7;
+}
+
+@keyframes fadeInLog {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Command Center */
+@media (max-width: 1024px) {
+  .complianceLayout {
+    grid-template-columns: 1fr;
+  }
+  .nodesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nodesGrid {
+    grid-template-columns: 1fr;
+  }
+  .commandHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .commandTabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+  }
+}
