@@ -72,6 +72,323 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* Steps Indicator */
+.stepsIndicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+  background: #080c1a;
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid #1e293b;
+}
+
+.indicatorStep {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  opacity: 0.4;
+  transition: all var(--transition-base);
+}
+
+.stepNum {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1e293b;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.stepLabel {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: #64748b;
+}
+
+.stepActive {
+  opacity: 1;
+}
+
+.stepActive .stepNum {
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
+  border-color: var(--color-accent-border);
+}
+
+.stepActive .stepLabel {
+  color: var(--color-white);
+}
+
+.stepCompleted .stepNum {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.indicatorLine {
+  flex: 1;
+  height: 2px;
+  background: #1e293b;
+}
+
+/* Step Pane & Inputs */
+.stepPane {
+  animation: fadeIn 0.4s ease both;
+}
+
+.stepTitle {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+  color: var(--color-white);
+}
+
+.stepSubtitle {
+  font-size: var(--font-size-sm);
+  color: #64748b;
+  margin-bottom: var(--space-8);
+}
+
+.inputGroup {
+  margin-bottom: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.inputGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.input {
+  background: #080c1a;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-fast);
+}
+
+.input:focus {
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.inputError {
+  border-color: #ef4444 !important;
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+/* Step 2 services select cards */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.serviceSelectCard {
+  background: #080c1a;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  gap: var(--space-4);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.serviceSelectCard:hover {
+  border-color: #3b82f6;
+  background: #0d1730;
+}
+
+.serviceSelectCardActive {
+  border-color: #3b82f6 !important;
+  background: #11224d !important;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+}
+
+.cardIndicator {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-sm);
+  border: 2px solid #1e293b;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-top: 3px;
+  position: relative;
+}
+
+.serviceSelectCardActive .cardIndicator {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.serviceSelectCardActive .cardIndicator::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.cardTitle {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.cardDesc {
+  font-size: var(--font-size-xs);
+  color: #64748b;
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+/* Step 3 scheduling styles */
+.calendarStrip {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+}
+
+.calendarStrip::-webkit-scrollbar {
+  height: 4px;
+}
+.calendarStrip::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: var(--radius-full);
+}
+
+.calendarDayCard {
+  flex: 1;
+  min-width: 80px;
+  background: #080c1a;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.calendarDayCard:hover {
+  border-color: #3b82f6;
+  background: #0d1730;
+}
+
+.calendarDayCardActive {
+  border-color: #3b82f6 !important;
+  background: #11224d !important;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.12);
+}
+
+.dayLabel {
+  font-size: var(--font-size-xs);
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.dateLabel {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.monthLabel {
+  font-size: var(--font-size-xs);
+  color: #64748b;
+}
+
+.subHeading {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: var(--space-4);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.timeSlotsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-2);
+}
+
+.timeSlotButton {
+  background: #080c1a;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  font-family: monospace;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.timeSlotButton:hover {
+  border-color: #3b82f6;
+  background: #0d1730;
+}
+
+.timeSlotButtonActive {
+  background: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: var(--color-white) !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive grid rules */
 @media (max-width: 1024px) {
   .layoutWrapper {
@@ -91,5 +408,18 @@
   
   .formPanel {
     padding: var(--space-6);
+  }
+  
+  .inputGrid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeSlotsGrid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
