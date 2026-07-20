@@ -132,6 +132,25 @@ export default function ConsultationPage() {
               </p>
             </div>
 
+            {step < 4 && (
+              <div className={styles.stepsIndicator}>
+                <div className={`${styles.indicatorStep} ${step >= 1 ? styles.stepActive : ""} ${step > 1 ? styles.stepCompleted : ""}`}>
+                  <span className={styles.stepNum}>{step > 1 ? "✓" : "1"}</span>
+                  <span className={styles.stepLabel}>Details</span>
+                </div>
+                <div className={styles.indicatorLine} />
+                <div className={`${styles.indicatorStep} ${step >= 2 ? styles.stepActive : ""} ${step > 2 ? styles.stepCompleted : ""}`}>
+                  <span className={styles.stepNum}>{step > 2 ? "✓" : "2"}</span>
+                  <span className={styles.stepLabel}>Scope</span>
+                </div>
+                <div className={styles.indicatorLine} />
+                <div className={`${styles.indicatorStep} ${step >= 3 ? styles.stepActive : ""} ${step > 3 ? styles.stepCompleted : ""}`}>
+                  <span className={styles.stepNum}>{step > 3 ? "✓" : "3"}</span>
+                  <span className={styles.stepLabel}>Schedule</span>
+                </div>
+              </div>
+            )}
+
             <div className={styles.formContent}>
               {step === 1 && (
                 <div className={styles.stepPane}>
