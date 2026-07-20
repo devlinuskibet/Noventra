@@ -4,6 +4,15 @@ import React, { useState } from "react";
 import { Shield, Clock, Phone, Mail, Award, CheckCircle, FileText, Calendar, ArrowRight } from "lucide-react";
 import styles from "./page.module.css";
 
+const servicesList = [
+  { id: "software", title: "Custom Software", desc: "Enterprise applications, APIs, SaaS architectures" },
+  { id: "cloud", title: "Cloud & DevOps", desc: "AWS/GCP migration, Kubernetes, infrastructure as code" },
+  { id: "security", title: "Cybersecurity & SOC", desc: "Audit compliance, penetration testing, threat detection" },
+  { id: "ai", title: "AI & Automation", desc: "Machine learning integration, data pipelines, automation" },
+  { id: "consulting", title: "IT Strategy", desc: "System design, risk assessment, tech roadmaps" },
+  { id: "managed", title: "Managed Services", desc: "24/7 network ops center, infrastructure maintenance" }
+];
+
 export default function ConsultationPage() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -45,6 +54,28 @@ export default function ConsultationPage() {
     if (validateStep1()) {
       setStep(2);
     }
+  };
+
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const toggleService = (id: string) => {
+    setSelectedServices((prev) =>
+      prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
+    );
+    if (errors.services) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next.services;
+        return next;
+      });
+    }
+  };
+
+  const handleNextStep2 = () => {
+    if (selectedServices.length === 0) {
+      setErrors((prev) => ({ ...prev, services: "Please select at least one area of interest" }));
+      return;
+    }
+    setStep(3);
   };
 
   return (
@@ -124,6 +155,39 @@ export default function ConsultationPage() {
                   <button onClick={handleNextStep1} className="btn btn--primary" style={{ marginTop: "var(--space-6)", width: "100%", justifyContent: "center" }}>
                     Continue to Project Scope <ArrowRight size={16} style={{ marginLeft: "8px" }} />
                   </button>
+                </div>
+              )}
+
+              {step === 2 && (
+                <div className={styles.stepPane}>
+                  <h2 className={styles.stepTitle}>Select Project Scope</h2>
+                  <p className={styles.stepSubtitle}>Choose the engineering areas you would like to address during the session.</p>
+
+                  <div className={styles.servicesGrid}>
+                    {servicesList.map((service) => (
+                      <button
+                        key={service.id}
+                        onClick={() => toggleService(service.id)}
+                        className={`${styles.serviceSelectCard} ${selectedServices.includes(service.id) ? styles.serviceSelectCardActive : ""}`}
+                      >
+                        <span className={styles.cardIndicator} />
+                        <div className={styles.cardContent}>
+                          <span className={styles.cardTitle}>{service.title}</span>
+                          <p className={styles.cardDesc}>{service.desc}</p>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                  {errors.services && <span className={styles.errorText} style={{ display: "block", marginTop: "var(--space-4)" }}>{errors.services}</span>}
+
+                  <div className={styles.buttonRow} style={{ marginTop: "var(--space-8)", display: "flex", gap: "var(--space-4)" }}>
+                    <button onClick={() => setStep(1)} className="btn btn--ghost" style={{ flex: 1, justifyContent: "center" }}>
+                      Back
+                    </button>
+                    <button onClick={handleNextStep2} className="btn btn--primary" style={{ flex: 2, justifyContent: "center" }}>
+                      Continue to Schedule <ArrowRight size={16} style={{ marginLeft: "8px" }} />
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
