@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { Shield, Clock, Phone, Mail, Award, CheckCircle, FileText, Calendar, ArrowRight } from "lucide-react";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 const servicesList = [
   { id: "software", title: "Custom Software", desc: "Enterprise applications, APIs, SaaS architectures" },
@@ -303,6 +304,56 @@ export default function ConsultationPage() {
                       Book Session <Calendar size={16} style={{ marginLeft: "8px" }} />
                     </button>
                   </div>
+                </div>
+              )}
+
+              {step === 4 && (
+                <div className={styles.successPane}>
+                  <div className={styles.successIconWrapper}>
+                    <CheckCircle className={styles.successCheckIcon} size={56} />
+                  </div>
+                  <h2 className={styles.successTitle}>Consultation Confirmed!</h2>
+                  <p className={styles.successSubtitle}>
+                    A calendar invitation and briefing questionnaire have been sent to <strong>{formData.email}</strong>.
+                  </p>
+                  
+                  <div className={styles.summaryBox}>
+                    <h3 className={styles.summaryTitle}>Booking Summary</h3>
+                    <div className={styles.summaryDetails}>
+                      <div className={styles.summaryRow}>
+                        <span>Representative:</span>
+                        <strong>{formData.name}</strong>
+                      </div>
+                      <div className={styles.summaryRow}>
+                        <span>Organization:</span>
+                        <strong>{formData.company} ({formData.role})</strong>
+                      </div>
+                      <div className={styles.summaryRow}>
+                        <span>Selected Areas:</span>
+                        <strong>
+                          {selectedServices.map((id) => servicesList.find((s) => s.id === id)?.title).join(", ")}
+                        </strong>
+                      </div>
+                      <div className={styles.summaryRow}>
+                        <span>Reserved Time:</span>
+                        <strong style={{ color: "var(--color-accent)" }}>
+                          {bookingDays[selectedDateIndex]?.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })} at {selectedTime}
+                        </strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={styles.nextSteps}>
+                    <h4>Next Steps</h4>
+                    <ul>
+                      <li>Review the brief questionnaire in your inbox to help us customize the session.</li>
+                      <li>Have current system architectures or pain point list handy for direct review.</li>
+                    </ul>
+                  </div>
+
+                  <Link href="/" className="btn btn--primary" style={{ width: "100%", justifyContent: "center", marginTop: "var(--space-6)" }}>
+                    Return to Home
+                  </Link>
                 </div>
               )}
             </div>

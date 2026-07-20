@@ -540,3 +540,137 @@
 .contactLink svg {
   color: var(--color-accent);
 }
+
+/* Success State details */
+.successPane {
+  text-align: center;
+  padding: var(--space-4) 0;
+  animation: fadeIn 0.5s ease both;
+}
+
+.successIconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.1);
+  border: 2px solid rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  margin-bottom: var(--space-6);
+  animation: scaleUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.successCheckIcon {
+  animation: rotateCheck 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.successTitle {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-white) !important;
+  margin-bottom: var(--space-2);
+}
+
+.successSubtitle {
+  font-size: var(--font-size-sm);
+  color: #94a3b8;
+  margin-bottom: var(--space-8);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: var(--line-height-relaxed);
+}
+
+.summaryBox {
+  background: #080c1a;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: left;
+  margin-bottom: var(--space-8);
+}
+
+.summaryTitle {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: #64748b;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.summaryDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: var(--font-size-sm);
+  gap: var(--space-8);
+}
+
+.summaryRow span {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.summaryRow strong {
+  color: var(--color-white);
+  text-align: right;
+}
+
+.nextSteps {
+  text-align: left;
+  margin-bottom: var(--space-8);
+}
+
+.nextSteps h4 {
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+  font-weight: 600;
+}
+
+.nextSteps ul {
+  padding-left: var(--space-5);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.nextSteps li {
+  font-size: var(--font-size-xs);
+  color: #94a3b8;
+  line-height: var(--line-height-relaxed);
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateCheck {
+  from {
+    transform: scale(0.5) rotate(-45deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
