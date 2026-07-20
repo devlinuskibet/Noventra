@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Shield, Clock, Phone, Mail, Award, CheckCircle, FileText, Calendar, ArrowRight } from "lucide-react";
 import styles from "./page.module.css";
 
@@ -12,6 +12,23 @@ const servicesList = [
   { id: "consulting", title: "IT Strategy", desc: "System design, risk assessment, tech roadmaps" },
   { id: "managed", title: "Managed Services", desc: "24/7 network ops center, infrastructure maintenance" }
 ];
+
+const timeSlots = ["09:00 AM", "10:30 AM", "01:00 PM", "02:30 PM", "04:00 PM"];
+
+const getNextBusinessDays = () => {
+  const days = [];
+  const now = new Date();
+  let current = new Date(now.getTime() + 24 * 60 * 60 * 1000); // Start tomorrow
+
+  while (days.length < 5) {
+    const dayOfWeek = current.getDay();
+    if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Skip Sat/Sun
+      days.push(new Date(current));
+    }
+    current.setDate(current.getDate() + 1);
+  }
+  return days;
+};
 
 export default function ConsultationPage() {
   const [step, setStep] = useState(1);
@@ -76,6 +93,29 @@ export default function ConsultationPage() {
       return;
     }
     setStep(3);
+  };
+
+  const [selectedDateIndex, setSelectedDateIndex] = useState(0);
+  const [selectedTime, setSelectedTime] = useState("");
+  const bookingDays = useMemo(() => getNextBusinessDays(), []);
+
+  const handleTimeSelect = (time: string) => {
+    setSelectedTime(time);
+    if (errors.time) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next.time;
+        return next;
+      });
+    }
+  };
+
+  const handleFormSubmit = () => {
+    if (!selectedTime) {
+      setErrors((prev) => ({ ...prev, time: "Please select a time slot" }));
+      return;
+    }
+    setStep(4); // Submission success screen
   };
 
   return (
@@ -186,6 +226,62 @@ export default function ConsultationPage() {
                     </button>
                     <button onClick={handleNextStep2} className="btn btn--primary" style={{ flex: 2, justifyContent: "center" }}>
                       Continue to Schedule <ArrowRight size={16} style={{ marginLeft: "8px" }} />
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {step === 3 && (
+                <div className={styles.stepPane}>
+                  <h2 className={styles.stepTitle}>Reserve Consultation Time</h2>
+                  <p className={styles.stepSubtitle}>Select your preferred slot. All times are shown in your local timezone.</p>
+
+                  <div className={styles.calendarStrip}>
+                    {bookingDays.map((day, idx) => {
+                      const isSelected = idx === selectedDateIndex;
+                      const dayName = day.toLocaleDateString("en-US", { weekday: "short" });
+                      const monthName = day.toLocaleDateString("en-US", { month: "short" });
+                      const dateNum = day.getDate();
+
+                      return (
+                        <button
+                          key={idx}
+                          onClick={() => {
+                            setSelectedDateIndex(idx);
+                            setSelectedTime(""); // Reset time on date change
+                          }}
+                          className={`${styles.calendarDayCard} ${isSelected ? styles.calendarDayCardActive : ""}`}
+                        >
+                          <span className={styles.dayLabel}>{dayName}</span>
+                          <span className={styles.dateLabel}>{dateNum}</span>
+                          <span className={styles.monthLabel}>{monthName}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <div className={styles.timeSlotsSection} style={{ marginTop: "var(--space-6)" }}>
+                    <h3 className={styles.subHeading}>Available Time Slots</h3>
+                    <div className={styles.timeSlotsGrid}>
+                      {timeSlots.map((time) => (
+                        <button
+                          key={time}
+                          onClick={() => handleTimeSelect(time)}
+                          className={`${styles.timeSlotButton} ${selectedTime === time ? styles.timeSlotButtonActive : ""}`}
+                        >
+                          {time}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  {errors.time && <span className={styles.errorText} style={{ display: "block", marginTop: "var(--space-4)" }}>{errors.time}</span>}
+
+                  <div className={styles.buttonRow} style={{ marginTop: "var(--space-8)", display: "flex", gap: "var(--space-4)" }}>
+                    <button onClick={() => setStep(2)} className="btn btn--ghost" style={{ flex: 1, justifyContent: "center" }}>
+                      Back
+                    </button>
+                    <button onClick={handleFormSubmit} className="btn btn--primary" style={{ flex: 2, justifyContent: "center" }}>
+                      Book Session <Calendar size={16} style={{ marginLeft: "8px" }} />
                     </button>
                   </div>
                 </div>
