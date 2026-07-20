@@ -423,3 +423,120 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Sidebar Panel Details */
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: var(--space-4);
+}
+
+.sidebarIcon {
+  color: var(--color-accent);
+}
+
+.sidebarTitle {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-8) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.benefitItem {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.benefitCheck {
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.benefitItem strong {
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  display: block;
+  margin-bottom: 1px;
+}
+
+.benefitItem p {
+  font-size: var(--font-size-xs);
+  color: #94a3b8;
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.testimonialBlock {
+  background: #0d1730;
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  border: 1px solid #1e293b;
+  margin-bottom: var(--space-8);
+}
+
+.quote {
+  font-style: italic;
+  font-size: var(--font-size-xs);
+  color: #cbd5e1;
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.author strong {
+  font-size: var(--font-size-xs);
+  color: var(--color-white);
+}
+
+.author span {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.contactDesk {
+  border-top: 1px solid #1e293b;
+  padding-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contactLabel {
+  font-size: var(--font-size-xs);
+  color: #64748b;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: 600;
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: #cbd5e1;
+}
+
+.contactLink svg {
+  color: var(--color-accent);
+}

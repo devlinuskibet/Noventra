@@ -311,7 +311,56 @@ export default function ConsultationPage() {
           {/* Right Panel: Trust & Benefits Sidebar */}
           <div className={styles.sidebarPanel}>
             <div className={styles.sidebarCard}>
-              <p style={{ color: "#64748b" }}>Trust and outcomes sidebar placeholder</p>
+              <div className={styles.sidebarHeader}>
+                <Shield className={styles.sidebarIcon} size={28} />
+                <h2 className={styles.sidebarTitle}>Why Book With Us?</h2>
+              </div>
+              
+              <ul className={styles.benefitsList}>
+                <li className={styles.benefitItem}>
+                  <CheckCircle className={styles.benefitCheck} size={18} />
+                  <div>
+                    <strong>Principal Engineers Only</strong>
+                    <p>You speak directly to engineering leads, not sales reps or account managers.</p>
+                  </div>
+                </li>
+                <li className={styles.benefitItem}>
+                  <CheckCircle className={styles.benefitCheck} size={18} />
+                  <div>
+                    <strong>NDA Protected & Secure</strong>
+                    <p>All shared architecture diagrams and system specs are treated with strict confidentiality.</p>
+                  </div>
+                </li>
+                <li className={styles.benefitItem}>
+                  <CheckCircle className={styles.benefitCheck} size={18} />
+                  <div>
+                    <strong>No-Obligation Deliverables</strong>
+                    <p>Receive a high-level roadmap report within 24 hours of our consultation session.</p>
+                  </div>
+                </li>
+              </ul>
+
+              <div className={styles.testimonialBlock}>
+                <p className={styles.quote}>
+                  &ldquo;The architecture review session was incredibly thorough. We solved our Kubernetes scaling bottlenecks in under an hour.&rdquo;
+                </p>
+                <div className={styles.author}>
+                  <strong>David Miller</strong>
+                  <span>CTO, Nexus Financial</span>
+                </div>
+              </div>
+
+              <div className={styles.contactDesk}>
+                <h4 className={styles.contactLabel}>Direct Inquiries</h4>
+                <div className={styles.contactLink}>
+                  <Mail size={16} />
+                  <span>architects@noventra.com</span>
+                </div>
+                <div className={styles.contactLink}>
+                  <Phone size={16} />
+                  <span>+1 (800) 555-0190</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
