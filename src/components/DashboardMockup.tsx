@@ -1,9 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../app/page.module.css";
 
 export default function DashboardMockup() {
+  const [uptime, setUptime] = useState(99.99);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setUptime(99.97 + Math.random() * 0.02);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className={styles.dashboardMockup}>
       <div className={styles.dashboardHeader}>
@@ -16,10 +25,13 @@ export default function DashboardMockup() {
       </div>
       <div className={styles.dashboardBody}>
         <div className={styles.dashboardMetric}>
-          <div className={styles.metricLabel}>System Uptime</div>
-          <div className={styles.metricValue}>99.99%</div>
+          <div className={styles.metricLabel} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            System Uptime
+            <span className={styles.livePulse} title="Live data feed active" />
+          </div>
+          <div className={styles.metricValue}>{uptime.toFixed(2)}%</div>
           <div className={styles.metricBar}>
-            <div className={styles.metricBarFill} style={{ width: "99.9%" }} />
+            <div className={styles.metricBarFill} style={{ width: `${uptime}%` }} />
           </div>
         </div>
         <div className={styles.dashboardMetric}>
