@@ -5,12 +5,21 @@ import styles from "../app/page.module.css";
 
 export default function DashboardMockup() {
   const [uptime, setUptime] = useState(99.99);
+  const [devices, setDevices] = useState(2438);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const uptimeInterval = setInterval(() => {
       setUptime(99.97 + Math.random() * 0.02);
     }, 2500);
-    return () => clearInterval(interval);
+
+    const devicesInterval = setInterval(() => {
+      setDevices((prev) => prev + Math.floor(Math.random() * 3));
+    }, 4000);
+
+    return () => {
+      clearInterval(uptimeInterval);
+      clearInterval(devicesInterval);
+    };
   }, []);
 
   return (
@@ -49,8 +58,11 @@ export default function DashboardMockup() {
           </div>
         </div>
         <div className={styles.dashboardMetric}>
-          <div className={styles.metricLabel}>Devices Secured</div>
-          <div className={styles.metricValue}>2,400+</div>
+          <div className={styles.metricLabel} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            Devices Secured
+            <span className={styles.livePulse} style={{ animationDelay: "1s" }} />
+          </div>
+          <div className={styles.metricValue}>{devices.toLocaleString()}+</div>
           <div className={styles.metricBar}>
             <div className={styles.metricBarFill} style={{ width: "85%" }} />
           </div>
